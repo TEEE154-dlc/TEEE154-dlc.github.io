@@ -36,16 +36,188 @@
       <span class="font-bold text-base tracking-wide text-white">TEEHID Shop</span>
     </div>
     
-    <!-- เมนูตรงกลาง (กดได้ทุกปุ่ม) -->
+    <!-- เมนูตรงกลาง -->
     <div class="hidden md:flex items-center gap-6 text-xs text-slate-400 font-medium">
       <a href="javascript:void(0)" onclick="resetHome()" class="text-white hover:text-cyan-400 transition">หน้าแรก</a>
       <a href="#fileGrid" onclick="filterCategory('all', document.querySelector('.cat-btn'))" class="hover:text-white transition">ดาวน์โหลดไฟล์</a>
       <button onclick="openTopupModal()" class="hover:text-cyan-400 transition">💳 เติมเงิน</button>
-      <!-- เปลี่ยนลิงก์ดิสคอร์ดตรงบรรทัดด้านล่างนี้ -->
-      <a href="https://discord.gg/KPQcKHuPT" target="_blank" class="hover:text-cyan-400 transition">ติดต่อ/Discord</a>
+      <a href="https://discord.gg/5GEbu84bXQ" target="_blank" class="hover:text-cyan-400 transition">ติดต่อ/Discord</a>
     </div>
 
-    <!-- ปุ่มด้านขวา: สมัครสมาชิก / เข้าสู่ระบบ -->
+    <!-- ปุ่มด้านขวา -->
     <div class="flex items-center gap-3">
       <button onclick="openAuthModal('register')" class="text-xs text-slate-300 hover:text-white px-2 py-1 transition">สมัครสมาชิก</button>
-      <button onclick="openAuthModal('login')" class="text-xs bg-cyan
+      <button onclick="openAuthModal('login')" class="text-xs bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold px-4 py-2 rounded-xl transition">เข้าสู่ระบบ</button>
+    </div>
+  </nav>
+
+  <!-- ================= โครงสร้างหลัก 3 คอลัมน์ ================= -->
+  <div class="max-w-[1500px] w-full mx-auto p-4 grid grid-cols-1 lg:grid-cols-12 gap-5 flex-1 items-start mt-2">
+    
+    <!-- [คอลัมน์ซ้าย]: หมวดหมู่ -->
+    <aside class="lg:col-span-3 panel-box rounded-2xl p-4 space-y-4">
+      <div class="pb-2 border-b border-white/5">
+        <h2 class="font-semibold text-xs text-white uppercase tracking-wider">Categories / หมวดหมู่</h2>
+      </div>
+      <div class="space-y-1.5 text-xs">
+        <button onclick="filterCategory('all', this)" class="cat-btn w-full text-left px-3 py-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 font-medium transition">📁 ไฟล์ทั้งหมด</button>
+        <button onclick="filterCategory('fps', this)" class="cat-btn w-full text-left px-3 py-2.5 rounded-xl text-slate-300 hover:bg-white/5 transition">⚡ ไฟล์เพิ่ม FPS / Boost</button>
+        <button onclick="filterCategory('windows', this)" class="cat-btn w-full text-left px-3 py-2.5 rounded-xl text-slate-300 hover:bg-white/5 transition">🪟 Windows ตัวปรับแต่ง</button>
+        <button onclick="filterCategory('tool', this)" class="cat-btn w-full text-left px-3 py-2.5 rounded-xl text-slate-300 hover:bg-white/5 transition">🛠️ เครื่องมือและตั้งค่า</button>
+      </div>
+    </aside>
+
+    <!-- [คอลัมน์กลาง]: โซนรายการดาวน์โหลดหลัก -->
+    <main class="lg:col-span-6 space-y-6">
+      
+      <div class="text-center py-4 panel-box rounded-2xl p-6">
+        <h1 class="text-2xl md:text-3xl font-bold text-white">
+          ศูนย์รวมดาวน์โหลดไฟล์ <span class="text-cyan-400">TEEHID</span>
+        </h1>
+        <p class="text-xs text-slate-400 mt-1">
+          แหล่งรวมไฟล์โปรแกรม ตัวช่วยตั้งค่า และตัวติดตั้งระบบ
+        </p>
+
+        <div class="mt-4 max-w-md mx-auto">
+          <input type="text" id="searchInput" onkeyup="searchFiles()" placeholder="🔍 ค้นหาชื่อไฟล์..." 
+            class="w-full bg-[#070a10] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500">
+        </div>
+      </div>
+
+      <div id="fileGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4 scroll-mt-24">
+        
+        <div class="file-card item-card rounded-2xl p-4 flex flex-col justify-between" data-category="windows" data-name="windows custom build">
+          <div>
+            <div class="h-32 bg-slate-900/80 rounded-xl mb-3 flex items-center justify-center text-xs text-slate-500 border border-white/5">
+              [ พรีวิวไฟล์รูป/ไอคอน ]
+            </div>
+            <h3 class="font-bold text-sm text-white">Windows Custom Build</h3>
+            <p class="text-[11px] text-slate-400 mt-1">ไฟล์ระบบปรับแต่งเพื่อการเล่นเกมโดยเฉพาะ ลื่น ไร้ดีเลย์</p>
+            <div class="flex gap-2 mt-2">
+              <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">Windows OS</span>
+              <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">Google Drive</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mt-5 pt-3 border-t border-white/5">
+            <a href="https://drive.google.com" target="_blank" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-2 rounded-xl text-center transition">⬇ ดาวน์โหลด</a>
+            <button onclick="alert('รายละเอียด: ไฟล์ระบบตัวนี้ได้รับการปรับแต่งพิเศษ')" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs py-2 rounded-xl text-center transition">📄 รายละเอียด</button>
+          </div>
+        </div>
+
+        <div class="file-card item-card rounded-2xl p-4 flex flex-col justify-between" data-category="tool" data-name="teehid toolbox v1">
+          <div>
+            <div class="h-32 bg-slate-900/80 rounded-xl mb-3 flex items-center justify-center text-xs text-slate-500 border border-white/5">
+              [ พรีวิวไฟล์รูป/ไอคอน ]
+            </div>
+            <h3 class="font-bold text-sm text-white">TEEHID Toolbox v1</h3>
+            <p class="text-[11px] text-slate-400 mt-1">รวมสคริปต์ปรับแต่งและจัดการระบบเครื่องคอมพิวเตอร์</p>
+            <div class="flex gap-2 mt-2">
+              <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">Toolbox</span>
+              <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">Direct Link</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mt-5 pt-3 border-t border-white/5">
+            <a href="https://drive.google.com" target="_blank" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-2 rounded-xl text-center transition">⬇ ดาวน์โหลด</a>
+            <button onclick="alert('รายละเอียด: โปรแกรมรวบรวมเครื่องมือปรับแต่งวินโดว์')" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs py-2 rounded-xl text-center transition">📄 รายละเอียด</button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- [คอลัมน์ขวา]: ประกาศ -->
+    <aside class="lg:col-span-3 panel-box rounded-2xl p-4 space-y-4">
+      <div class="pb-2 border-b border-white/5">
+        <h2 class="font-semibold text-xs text-white uppercase tracking-wider">📢 Announcements / ประกาศ</h2>
+      </div>
+      <div class="text-xs text-slate-400 space-y-2">
+        <div class="bg-[#070a10] p-3 rounded-xl border border-white/5">
+          <p class="font-medium text-slate-200">อัปเดตลิงก์ใหม่</p>
+          <p class="text-[11px] text-slate-500 mt-0.5">เพิ่มไฟล์ดาวน์โหลดชุดใหม่เรียบร้อยแล้ว สามารถกดโหลดได้เลย</p>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- ================= หน้าต่างป๊อปอัป เติมเงิน & เข้าสู่ระบบ ================= -->
+  <div id="topupModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+    <div class="panel-box rounded-2xl p-6 max-w-sm w-full space-y-4 relative border border-white/15">
+      <button onclick="closeModals()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm">✖</button>
+      <h2 class="text-base font-bold text-white">💳 ช่องทางการเติมเงิน</h2>
+      <div class="bg-[#070a10] p-3 rounded-xl border border-white/10 text-xs space-y-2 text-slate-300">
+        <p><strong class="text-cyan-400">Wallet:</strong> 08X-XXX-XXXX (ชื่อของคุณ)</p>
+        <p><strong class="text-cyan-400">Bank:</strong> XXX-X-XXXXX-X (กสิกร)</p>
+      </div>
+      <p class="text-[11px] text-slate-400">โอนเงินแล้วสามารถส่งสลิปยืนยันได้ที่ Discord ของร้าน</p>
+    </div>
+  </div>
+
+  <div id="authModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+    <div class="panel-box rounded-2xl p-6 max-w-sm w-full space-y-4 relative border border-white/15">
+      <button onclick="closeModals()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm">✖</button>
+      <h2 id="authTitle" class="text-base font-bold text-white">เข้าสู่ระบบ</h2>
+      <div class="space-y-3">
+        <input type="text" placeholder="ชื่อผู้ใช้งาน / Username" class="w-full bg-[#070a10] border border-white/10 rounded-xl px-4 py-2 text-xs text-white">
+        <input type="password" placeholder="รหัสผ่าน / Password" class="w-full bg-[#070a10] border border-white/10 rounded-xl px-4 py-2 text-xs text-white">
+        <button onclick="alert('ระบบสมาชิกกำลังเปิดใช้งานเร็วๆ นี้'); closeModals();" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-xs py-2.5 rounded-xl transition">ยืนยัน</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-[#0b1019] border-t border-slate-800/80 py-6 text-center text-xs text-slate-500 mt-10">
+    <p>© 2026 TEEHID Shop. All rights reserved.</p>
+  </footer>
+
+  <!-- Script ควบคุมการทำงาน -->
+  <script>
+    function resetHome() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      filterCategory('all', document.querySelector('.cat-btn'));
+    }
+
+    function searchFiles() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      document.querySelectorAll('.file-card').forEach(card => {
+        const name = card.getAttribute('data-name').toLowerCase();
+        card.style.display = name.includes(input) ? 'flex' : 'none';
+      });
+    }
+
+    function filterCategory(cat, btnElement) {
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.className = 'cat-btn w-full text-left px-3 py-2.5 rounded-xl text-slate-300 hover:bg-white/5 transition';
+      });
+      if(btnElement) {
+        btnElement.className = 'cat-btn w-full text-left px-3 py-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 font-medium transition';
+      }
+      document.querySelectorAll('.file-card').forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-category') === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function openTopupModal() {
+      document.getElementById('topupModal').classList.remove('hidden');
+      document.getElementById('topupModal').classList.add('flex');
+    }
+
+    function openAuthModal(type) {
+      document.getElementById('authTitle').innerText = (type === 'login') ? 'เข้าสู่ระบบ' : 'สมัครสมาชิก';
+      document.getElementById('authModal').classList.remove('hidden');
+      document.getElementById('authModal').classList.add('flex');
+    }
+
+    function closeModals() {
+      document.getElementById('topupModal').classList.add('hidden');
+      document.getElementById('topupModal').classList.remove('flex');
+      document.getElementById('authModal').classList.add('hidden');
+      document.getElementById('authModal').classList.remove('flex');
+    }
+  </script>
+</body>
+</html>

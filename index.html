@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TEEHID Shop - Download Center</title>
+  <title>GUTEE Shop - Download Center</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -33,7 +33,7 @@
   <nav class="bg-[#0b1019] border-b border-slate-800/80 px-6 py-3.5 flex justify-between items-center sticky top-0 z-50">
     <div class="flex items-center gap-3">
       <div class="w-8 h-8 rounded-lg bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-400 font-bold text-sm">T</div>
-      <span class="font-bold text-base tracking-wide text-white">TEEHID Shop</span>
+      <span class="font-bold text-base tracking-wide text-white">GUTEE Shop</span>
     </div>
     
     <!-- เมนูตรงกลาง -->
@@ -72,7 +72,7 @@
       
       <div class="text-center py-4 panel-box rounded-2xl p-6">
         <h1 class="text-2xl md:text-3xl font-bold text-white">
-          ศูนย์รวมดาวน์โหลดไฟล์ <span class="text-cyan-400">TEEHID</span>
+          ศูนย์รวมดาวน์โหลดไฟล์ <span class="text-cyan-400">GUTEE</span>
         </h1>
         <p class="text-xs text-slate-400 mt-1">
           แหล่งรวมไฟล์โปรแกรม ตัวช่วยตั้งค่า และตัวติดตั้งระบบ
@@ -90,7 +90,7 @@
         <div class="file-card item-card rounded-2xl p-4 flex flex-col justify-between" data-category="windows" data-name="kernelos windows 10">
           <div>
             <div class="h-32 bg-slate-900/80 rounded-xl mb-3 overflow-hidden border border-white/5">
-              <img src="KernelOS/Wallpaper.jpg" alt="Preview" class="w-full h-full object-cover">
+              <img src="KernelOS/Wallpaper.png" alt="Preview" class="w-full h-full object-cover">
             </div>
             <h3 class="font-bold text-sm text-white">KernelOS Windows 10</h3>
             <p class="text-[11px] text-slate-400 mt-1">ไฟล์ระบบปรับแต่งเพื่อการเล่นเกมโดยเฉพาะ ลื่น ไร้ดีเลย์</p>
@@ -175,7 +175,7 @@
   <!-- Script ควบคุมการทำงาน -->
   <script>
     window.addEventListener('DOMContentLoaded', () => {
-      const savedUser = localStorage.getItem('teehid_user');
+      const savedUser = localStorage.getItem('gutee_user');
       if (savedUser) {
         document.getElementById('userAuthArea').innerHTML = `
           <div class="flex items-center gap-2">
@@ -235,14 +235,14 @@
         alert('กรุณากรอกชื่อผู้ใช้งานครับ');
         return;
       }
-      localStorage.setItem('teehid_user', username);
+      localStorage.setItem('gutee_user', username);
       alert((authMode === 'login' ? 'เข้าสู่ระบบสำเร็จ ยินดีต้อนรับ: ' : 'สมัครสมาชิกสำเร็จ: ') + username);
       closeModals();
       location.reload();
     }
 
     function logout() {
-      localStorage.removeItem('teehid_user');
+      localStorage.removeItem('gutee_user');
       location.reload();
     }
 

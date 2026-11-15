@@ -3,50 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Template</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-slate-950 text-white min-h-screen flex flex-col">
-
-  <!-- 1. แถบเมนูด้านบน (Navbar) -->
-  <nav class="h-16 border-b border-slate-800 flex items-center justify-between px-6">
-    <div><!-- โลโก้ --></div>
-    <div class="flex gap-6"><!-- เมนูต่างๆ --></div>
-  </nav>
-
-  <!-- 2. พื้นที่หลัก 3 คอลัมน์ -->
-  <div class="max-w-[1600px] w-full mx-auto p-4 grid grid-cols-1 lg:grid-cols-12 gap-4 flex-1">
-    
-    <!-- คอลัมน์ซ้าย (Sidebar ซ้าย) -->
-    <aside class="lg:col-span-3 border border-slate-800 rounded-xl p-4">
-      <!-- ใส่เนื้อหาฝั่งซ้ายตรงนี้ -->
-    </aside>
-
-    <!-- คอลัมน์กลาง (Main Content) -->
-    <main class="lg:col-span-6 border border-slate-800 rounded-xl p-4 space-y-4">
-      <!-- ส่วนหัวข้อหลัก / ช่องค้นหา -->
-      <div class="h-24 border border-slate-800 rounded-lg"></div>
-      
-      <!-- พื้นที่แสดงรายการไฟล์ (Grid) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="h-48 border border-slate-800 rounded-lg"></div>
-        <div class="h-48 border border-slate-800 rounded-lg"></div>
-      </div>
-    </main>
-
-    <!-- คอลัมน์ขวา (Sidebar ขวา) -->
-    <aside class="lg:col-span-3 border border-slate-800 rounded-xl p-4">
-      <!-- ใส่เนื้อหาฝั่งขวาตรงนี้ -->
-    </aside>
-
-  </div>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="th">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TEEHID Shop - Download Center</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -56,179 +12,135 @@
       background: #070a10; 
       color: #f8fafc; 
     }
-    .glass-panel {
+    .panel-box {
       background: #0d131f;
       border: 1px solid rgba(255, 255, 255, 0.06);
     }
-    .card-box {
+    .item-card {
       background: #0d131f;
       border: 1px solid rgba(255, 255, 255, 0.08);
       transition: all 0.2s ease;
     }
-    .card-box:hover {
+    .item-card:hover {
       border-color: rgba(56, 189, 248, 0.4);
     }
   </style>
 </head>
 <body class="min-h-screen flex flex-col">
 
-  <!-- ================= 1. แถบเมนูด้านบน (NAVBAR) ================= -->
-  <nav class="bg-[#0b1019] border-b border-slate-800/80 px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+  <!-- ================= แถบเมนูด้านบนแบบเรียบง่าย ================= -->
+  <nav class="bg-[#0b1019] border-b border-slate-800/80 px-6 py-3.5 flex justify-between items-center sticky top-0 z-50">
     <div class="flex items-center gap-3">
       <div class="w-8 h-8 rounded-lg bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-400 font-bold text-sm">T</div>
       <span class="font-bold text-base tracking-wide text-white">TEEHID Shop</span>
     </div>
-    <div class="flex items-center gap-6 text-sm text-slate-400">
-      <a href="#" class="hover:text-white transition">หน้าแรก</a>
-      <a href="#" class="hover:text-white transition">ดาวน์โหลด</a>
-      <a href="#" class="hover:text-white transition">ร้านค้า</a>
-      <a href="#" class="hover:text-cyan-400 transition">Discord</a>
+    <div class="flex items-center gap-6 text-xs text-slate-400 font-medium">
+      <a href="#" class="text-white">หน้าแรก</a>
+      <a href="#" class="hover:text-white transition">ดาวน์โหลดไฟล์</a>
+      <a href="#" class="hover:text-white transition">ติดต่อ/Discord</a>
     </div>
   </nav>
 
-  <!-- ================= 2. พื้นที่หลัก 3 คอลัมน์ ================= -->
-  <div class="max-w-[1600px] w-full mx-auto p-4 grid grid-cols-1 lg:grid-cols-12 gap-5 flex-1 items-start">
+  <!-- ================= โครงสร้างหลัก 3 คอลัมน์ ================= -->
+  <div class="max-w-[1500px] w-full mx-auto p-4 grid grid-cols-1 lg:grid-cols-12 gap-5 flex-1 items-start mt-2">
     
-    <!-- คอลัมน์ซ้าย: สินค้าจากร้าน -->
-    <aside class="lg:col-span-3 glass-panel rounded-2xl p-4 space-y-4">
-      <div class="flex justify-between items-center">
-        <div>
-          <h2 class="font-semibold text-sm text-white">สินค้าจากร้าน</h2>
-          <p class="text-[11px] text-slate-400">กดที่สินค้าเพื่อสั่งซื้อ</p>
-        </div>
-        <span class="text-[11px] text-slate-400 hover:text-white cursor-pointer">ดูทั้งหมด →</span>
+    <!-- [คอลัมน์ซ้าย]: เมนูหมวดหมู่หรือสินค้าเสริม -->
+    <aside class="lg:col-span-3 panel-box rounded-2xl p-4 space-y-4">
+      <div class="flex justify-between items-center pb-2 border-b border-white/5">
+        <h2 class="font-semibold text-xs text-white uppercase tracking-wider">Categories / หมวดหมู่</h2>
       </div>
-
-      <div class="card-box rounded-xl p-3">
-        <div class="h-32 bg-slate-900 rounded-lg mb-2 flex items-center justify-center text-xs text-slate-500">[ รูปสินค้า ]</div>
-        <h3 class="font-semibold text-sm text-white">TEEHID Toolbox</h3>
-        <p class="text-[11px] text-slate-400 mt-1">ตัวช่วยตั้งค่า Windows และปรับแต่งเกม</p>
-        <div class="flex justify-between items-center mt-3 pt-2.5 border-t border-white/5">
-          <span class="text-cyan-400 font-bold text-sm">79 บาท</span>
-          <a href="#" class="text-xs bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-lg hover:bg-cyan-500 hover:text-slate-950 transition">สั่งซื้อ →</a>
-        </div>
-      </div>
+      <ul class="space-y-1.5 text-xs text-slate-300">
+        <li><a href="#" class="block px-3 py-2 rounded-xl bg-cyan-500/10 text-cyan-400 font-medium">📁 ไฟล์ทั้งหมด</a></li>
+        <li><a href="#" class="block px-3 py-2 rounded-xl hover:bg-white/5 transition">⚡ ไฟล์เพิ่ม FPS / Boost</a></li>
+        <li><a href="#" class="block px-3 py-2 rounded-xl hover:bg-white/5 transition">🪟 Windows ตัวปรับแต่ง</a></li>
+        <li><a href="#" class="block px-3 py-2 rounded-xl hover:bg-white/5 transition">🛠️ เครื่องมือและตั้งค่า</a></li>
+      </ul>
     </aside>
 
-    <!-- คอลัมน์กลาง: โซนดาวน์โหลดหลัก -->
+    <!-- [คอลัมน์กลาง]: โซนรายการดาวน์โหลดหลัก -->
     <main class="lg:col-span-6 space-y-6">
       
-      <!-- หัวข้อหน้าดาวน์โหลด & สถิติ -->
-      <div class="text-center py-2">
-        <span class="text-[10px] tracking-widest uppercase bg-white/5 border border-white/10 text-slate-300 px-3 py-1 rounded-full">
-          TEEHID DOWNLOAD
-        </span>
-        <h1 class="text-3xl md:text-4xl font-bold mt-3 text-white">
-          โหลดไฟล์ของ <span class="text-cyan-400">TEEHID</span> ได้ที่นี่
+      <!-- หัวข้อหน้าหลัก -->
+      <div class="text-center py-4 panel-box rounded-2xl p-6">
+        <h1 class="text-2xl md:text-3xl font-bold text-white">
+          ศูนย์รวมดาวน์โหลดไฟล์ <span class="text-cyan-400">TEEHID</span>
         </h1>
-        <p class="text-xs md:text-sm text-slate-400 mt-1.5">
-          ไฟล์โปรแกรม และ ISO ของ TEEHID Shop รวมไว้ที่เดียว
+        <p class="text-xs text-slate-400 mt-1">
+          แหล่งรวมไฟล์โปรแกรม ตัวช่วยตั้งค่า และตัวติดตั้งระบบ
         </p>
 
-        <!-- สถิติตัวเลข 3 ช่อง -->
-        <div class="flex justify-center gap-10 mt-5">
-          <div>
-            <p class="text-lg font-bold text-white">11</p>
-            <p class="text-[11px] text-slate-400">ไฟล์ทั้งหมด</p>
-          </div>
-          <div>
-            <p class="text-lg font-bold text-white">6</p>
-            <p class="text-[11px] text-slate-400">หมวดหมู่</p>
-          </div>
-          <div>
-            <p class="text-lg font-bold text-cyan-400">8,216</p>
-            <p class="text-[11px] text-slate-400">ครั้งที่ถูกโหลด</p>
-          </div>
+        <!-- ช่องค้นหา -->
+        <div class="mt-4 max-w-md mx-auto">
+          <input type="text" id="searchInput" onkeyup="filterFiles()" placeholder="🔍 ค้นหาชื่อไฟล์..." 
+            class="w-full bg-[#070a10] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500">
         </div>
       </div>
 
-      <!-- ช่องค้นหา + ปุ่มกรองหมวดหมู่ -->
-      <div class="flex flex-col sm:flex-row gap-2.5">
-        <input type="text" id="searchInput" onkeyup="filterFiles()" placeholder="🔍 ค้นหาชื่อไฟล์..." 
-          class="w-full bg-[#0d131f] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500">
-        <div class="flex gap-1.5 shrink-0 overflow-x-auto pb-1 sm:pb-0">
-          <button onclick="filterCategory('all', this)" class="cat-btn bg-cyan-500 text-slate-950 font-semibold text-xs px-3.5 py-2.5 rounded-xl transition">ทั้งหมด 11</button>
-          <button onclick="filterCategory('os', this)" class="cat-btn bg-[#0d131f] border border-white/10 text-slate-300 text-xs px-3.5 py-2.5 rounded-xl hover:border-white/25 transition">Windows OS</button>
-          <button onclick="filterCategory('fps', this)" class="cat-btn bg-[#0d131f] border border-white/10 text-slate-300 text-xs px-3.5 py-2.5 rounded-xl hover:border-white/25 transition">BoostFPS</button>
-        </div>
-      </div>
-
-      <!-- Grid รายการไฟล์ดาวน์โหลด -->
+      <!-- รายการไฟล์ (Grid) -->
       <div id="fileGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
         
-        <!-- การ์ดไฟล์ที่ 1 -->
-        <div class="file-card card-box rounded-2xl p-3.5 flex flex-col justify-between" data-category="os" data-name="rapid windows">
+        <!-- ตัวอย่างการ์ดไฟล์ที่ 1 -->
+        <div class="file-card item-card rounded-2xl p-4 flex flex-col justify-between" data-name="windows">
           <div>
-            <div class="grid grid-cols-2 rounded-xl overflow-hidden mb-3 text-center font-bold">
-              <div class="bg-red-600 py-3 px-2 text-white">
-                <span class="text-[10px] bg-black/30 px-2 py-0.5 rounded-full">ก่อน</span>
-                <p class="text-base mt-1">✖ 322 FPS</p>
-              </div>
-              <div class="bg-emerald-500 py-3 px-2 text-slate-950">
-                <span class="text-[10px] bg-white/40 px-2 py-0.5 rounded-full">หลัง</span>
-                <p class="text-base mt-1">✔ 399 FPS</p>
-              </div>
+            <div class="h-32 bg-slate-900/80 rounded-xl mb-3 flex items-center justify-center text-xs text-slate-500 border border-white/5">
+              [ พรีวิวไฟล์รูป/ไอคอน ]
             </div>
-            <h3 class="font-bold text-sm text-white">Rapid Windows 10/11</h3>
-            <span class="inline-block text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded mt-1">Windows OS</span>
-            <p class="text-[10px] text-slate-500 mt-2">Google Drive • อัปเดตล่าสุด</p>
+            <h3 class="font-bold text-sm text-white">Windows Custom Build</h3>
+            <p class="text-[11px] text-slate-400 mt-1">ไฟล์ระบบปรับแต่งเพื่อการเล่นเกมโดยเฉพาะ ลื่น ไร้ดีเลย์</p>
+            <div class="flex gap-2 mt-2">
+              <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">Windows OS</span>
+              <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">Google Drive</span>
+            </div>
           </div>
-          <div class="grid grid-cols-2 gap-2 mt-4">
+          <div class="grid grid-cols-2 gap-2 mt-5 pt-3 border-t border-white/5">
             <a href="#" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-2 rounded-xl text-center transition">⬇ ดาวน์โหลด</a>
-            <a href="#" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs py-2 rounded-xl text-center transition">📄 ดูวิธีใช้</a>
+            <a href="#" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs py-2 rounded-xl text-center transition">📄 รายละเอียด</a>
           </div>
         </div>
 
-        <!-- การ์ดไฟล์ที่ 2 -->
-        <div class="file-card card-box rounded-2xl p-3.5 flex flex-col justify-between" data-category="os" data-name="kernelos">
+        <!-- ตัวอย่างการ์ดไฟล์ที่ 2 -->
+        <div class="file-card item-card rounded-2xl p-4 flex flex-col justify-between" data-name="toolbox">
           <div>
-            <div class="grid grid-cols-2 rounded-xl overflow-hidden mb-3 text-center font-bold">
-              <div class="bg-red-600 py-3 px-2 text-white">
-                <span class="text-[10px] bg-black/30 px-2 py-0.5 rounded-full">ก่อน</span>
-                <p class="text-base mt-1">✖ 144 FPS</p>
-              </div>
-              <div class="bg-emerald-500 py-3 px-2 text-slate-950">
-                <span class="text-[10px] bg-white/40 px-2 py-0.5 rounded-full">หลัง</span>
-                <p class="text-base mt-1">✔ 488 FPS</p>
-              </div>
+            <div class="h-32 bg-slate-900/80 rounded-xl mb-3 flex items-center justify-center text-xs text-slate-500 border border-white/5">
+              [ พรีวิวไฟล์รูป/ไอคอน ]
             </div>
-            <h3 class="font-bold text-sm text-white">KernelOS Windows 10</h3>
-            <span class="inline-block text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded mt-1">Windows OS</span>
-            <p class="text-[10px] text-slate-500 mt-2">kernelos.org • ยอดนิยม</p>
+            <h3 class="font-bold text-sm text-white">TEEHID Toolbox v1</h3>
+            <p class="text-[11px] text-slate-400 mt-1">รวมสคริปต์ปรับแต่งและจัดการระบบเครื่องคอมพิวเตอร์</p>
+            <div class="flex gap-2 mt-2">
+              <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">Toolbox</span>
+              <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">Direct Link</span>
+            </div>
           </div>
-          <div class="grid grid-cols-2 gap-2 mt-4">
+          <div class="grid grid-cols-2 gap-2 mt-5 pt-3 border-t border-white/5">
             <a href="#" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-2 rounded-xl text-center transition">⬇ ดาวน์โหลด</a>
-            <a href="#" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs py-2 rounded-xl text-center transition">📄 ดูวิธีใช้</a>
+            <a href="#" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs py-2 rounded-xl text-center transition">📄 รายละเอียด</a>
           </div>
         </div>
 
       </div>
     </main>
 
-    <!-- คอลัมน์ขวา: สินค้าแนะนำ -->
-    <aside class="lg:col-span-3 glass-panel rounded-2xl p-4 space-y-4">
-      <div class="flex justify-between items-center">
-        <div>
-          <h2 class="font-semibold text-sm text-white">สินค้าแนะนำ</h2>
-          <p class="text-[11px] text-slate-400">สินค้าขายดีประจำร้าน</p>
-        </div>
-        <span class="text-[11px] text-slate-400 hover:text-white cursor-pointer">ดูทั้งหมด →</span>
+    <!-- [คอลัมน์ขวา]: ข้อมูลประกาศหรือสถานะระบบ -->
+    <aside class="lg:col-span-3 panel-box rounded-2xl p-4 space-y-4">
+      <div class="pb-2 border-b border-white/5">
+        <h2 class="font-semibold text-xs text-white uppercase tracking-wider">📢 Announcements / ประกาศ</h2>
       </div>
-
-      <div class="card-box rounded-xl p-3">
-        <div class="h-32 bg-slate-900 rounded-lg mb-2 flex items-center justify-center text-xs text-slate-500">[ รูปสินค้า ]</div>
-        <h3 class="font-semibold text-sm text-white">Setting Pro v3</h3>
-        <p class="text-[11px] text-slate-400 mt-1">ตั้งค่าเต็มระบบ รีดประสิทธิภาพสูงสุด</p>
-        <div class="flex justify-between items-center mt-3 pt-2.5 border-t border-white/5">
-          <span class="text-cyan-400 font-bold text-sm">369 บาท</span>
-          <a href="#" class="text-xs bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-lg hover:bg-cyan-500 hover:text-slate-950 transition">สั่งซื้อ →</a>
+      <div class="text-xs text-slate-400 space-y-2">
+        <div class="bg-[#070a10] p-3 rounded-xl border border-white/5">
+          <p class="font-medium text-slate-200">อัปเดตลิงก์ใหม่</p>
+          <p class="text-[11px] text-slate-500 mt-0.5">เพิ่มไฟล์ดาวน์โหลดชุดใหม่เรียบร้อยแล้ว สามารถกดโหลดได้เลย</p>
         </div>
       </div>
     </aside>
 
   </div>
 
-  <!-- สคริปต์ระบบค้นหาและกรองหมวดหมู่ -->
+  <!-- Footer -->
+  <footer class="bg-[#0b1019] border-t border-slate-800/80 py-6 text-center text-xs text-slate-500 mt-10">
+    <p>© 2026 TEEHID Shop. All rights reserved.</p>
+  </footer>
+
+  <!-- สคริปต์ค้นหาไฟล์ -->
   <script>
     function filterFiles() {
       const input = document.getElementById('searchInput').value.toLowerCase();
@@ -237,305 +149,6 @@
         card.style.display = name.includes(input) ? 'flex' : 'none';
       });
     }
-
-    function filterCategory(cat, btnElement) {
-      document.querySelectorAll('.cat-btn').forEach(btn => {
-        btn.className = 'cat-btn bg-[#0d131f] border border-white/10 text-slate-300 text-xs px-3.5 py-2.5 rounded-xl hover:border-white/25 transition';
-      });
-      btnElement.className = 'cat-btn bg-cyan-500 text-slate-950 font-semibold text-xs px-3.5 py-2.5 rounded-xl transition';
-
-      document.querySelectorAll('.file-card').forEach(card => {
-        card.style.display = (cat === 'all' || card.getAttribute('data-category') === cat) ? 'flex' : 'none';
-      });
-    }
   </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="th">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TEEHID SHOP - ร้านค้าดิจิทัล</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    body { 
-      font-family: 'Kanit', sans-serif; 
-      background: #070a10; 
-      color: #f8fafc; 
-    }
-    .glass-panel {
-      background: #0d131f;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-    }
-    .card-box {
-      background: #0d131f;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.2s ease;
-    }
-    .card-box:hover {
-      border-color: rgba(56, 189, 248, 0.4);
-    }
-    .page-section {
-      display: none;
-    }
-    .page-section.active {
-      display: block;
-      animation: fadeIn 0.2s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(4px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
-</head>
-<body class="min-h-screen flex flex-col">
-
-  <!-- ================= 1. แถบเมนูทรงแคปซูลลอย (FLOATING NAVBAR) ================= -->
-  <header class="sticky top-0 z-50 px-4 pt-4">
-    <nav class="max-w-[1400px] mx-auto bg-[#0c121d]/95 backdrop-blur-md border border-white/10 rounded-full px-5 py-2.5 flex justify-between items-center shadow-lg">
-      
-      <!-- โลโก้ร้าน -->
-      <a href="#" onclick="switchPage('home', document.getElementById('nav-home'))" class="flex items-center gap-2.5 pl-1">
-        <div class="w-8 h-8 rounded-lg bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-400 font-bold text-base">T</div>
-        <span class="font-bold text-base tracking-wide text-white">TEEHID <span class="text-cyan-400">SHOP</span></span>
-      </a>
-      
-      <!-- เมนูตรงกลาง (กดเปลี่ยนหน้าได้จริง) -->
-      <div class="hidden lg:flex items-center gap-1.5 text-xs font-medium">
-        <button id="nav-home" onclick="switchPage('home', this)" class="nav-btn bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 px-4 py-2 rounded-full flex items-center gap-1.5 transition">
-          <span>🏠</span> หน้าแรก
-        </button>
-        <button id="nav-products" onclick="switchPage('products', this)" class="nav-btn text-slate-400 hover:text-white px-4 py-2 rounded-full flex items-center gap-1.5 transition">
-          <span>🏪</span> สินค้า
-        </button>
-        <button id="nav-download" onclick="switchPage('download', this)" class="nav-btn text-slate-400 hover:text-white px-4 py-2 rounded-full flex items-center gap-1.5 transition">
-          <span>⬇</span> ดาวน์โหลด
-        </button>
-        <button id="nav-topup" onclick="switchPage('topup', this)" class="nav-btn text-slate-400 hover:text-white px-4 py-2 rounded-full flex items-center gap-1.5 transition">
-          <span>💳</span> เติมเงิน
-        </button>
-        <button id="nav-hwid" onclick="switchPage('hwid', this)" class="nav-btn text-slate-400 hover:text-white px-4 py-2 rounded-full flex items-center gap-1.5 transition">
-          <span>🔄</span> Reset HWID
-        </button>
-        <button id="nav-orders" onclick="switchPage('orders', this)" class="nav-btn text-slate-400 hover:text-white px-4 py-2 rounded-full flex items-center gap-1.5 transition">
-          <span>🛍️</span> คำสั่งซื้อ
-        </button>
-      </div>
-
-      <!-- ปุ่มขวา: สมัครสมาชิก / เข้าสู่ระบบ -->
-      <div class="flex items-center gap-3 pr-1">
-        <button onclick="openAuthModal('register')" class="text-xs text-slate-300 hover:text-white px-3 py-2 transition">สมัครสมาชิก</button>
-        <button onclick="openAuthModal('login')" class="text-xs bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-semibold px-4 py-2 rounded-full flex items-center gap-1 transition">
-          เข้าสู่ระบบ <span>↗</span>
-        </button>
-      </div>
-
-    </nav>
-  </header>
-
-  <!-- ================= 2. พื้นที่แสดงผลแต่ละหน้า ================= -->
-  <main class="max-w-[1400px] w-full mx-auto px-4 py-8 flex-1">
-
-    <!-- ==================== หน้า 1: หน้าแรก (HOME) ==================== -->
-    <div id="page-home" class="page-section active space-y-10">
-      <!-- แบนเนอร์หลัก -->
-      <div class="relative rounded-3xl overflow-hidden glass-panel p-8 md:p-12 flex flex-col md:flex-row justify-between items-center gap-8 border border-white/10">
-        <div class="space-y-4 max-w-xl">
-          <span class="text-[11px] tracking-widest uppercase bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 px-3 py-1 rounded-full font-medium">
-            — TEEHID SHOP
-          </span>
-          <h1 class="text-3xl md:text-5xl font-bold text-white tracking-tight leading-tight">
-            โปรแกรมและไฟล์ตั้งค่า ของ TEEHID
-          </h1>
-          <p class="text-sm text-slate-400">
-            เลือกสินค้า เติมเงินเข้าบัญชี แล้วรับคีย์หรือไฟล์ดาวน์โหลดได้ทันที
-          </p>
-          <div class="flex gap-3 pt-2">
-            <button onclick="switchPage('products', document.getElementById('nav-products'))" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-xs px-5 py-3 rounded-xl transition">ดูสินค้าทั้งหมด</button>
-            <button onclick="switchPage('topup', document.getElementById('nav-topup'))" class="bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold text-xs px-5 py-3 rounded-xl transition">เติมเงิน</button>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-3 gap-2 opacity-90">
-          <div class="h-40 w-24 bg-slate-900 rounded-xl border border-white/10 flex items-center justify-center text-[10px] text-slate-500">[ รูป 1 ]</div>
-          <div class="h-40 w-24 bg-slate-900 rounded-xl border border-white/10 flex items-center justify-center text-[10px] text-slate-500">[ รูป 2 ]</div>
-          <div class="h-40 w-24 bg-slate-900 rounded-xl border border-white/10 flex items-center justify-center text-[10px] text-slate-500">[ รูป 3 ]</div>
-        </div>
-      </div>
-
-      <!-- หมวดหมู่สินค้า -->
-      <section class="space-y-4">
-        <div class="flex justify-between items-center">
-          <h2 class="text-base font-semibold text-white tracking-wide">— CATEGORIES <span class="text-slate-400 font-normal ml-2">หมวดหมู่สินค้า</span></h2>
-          <button onclick="switchPage('products', document.getElementById('nav-products'))" class="text-xs text-slate-400 hover:text-white transition">ทุกหมวดหมู่ ↗</button>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div onclick="switchPage('products', document.getElementById('nav-products'))" class="card-box rounded-2xl p-4 flex items-center justify-between cursor-pointer">
-            <div>
-              <h3 class="font-bold text-sm text-white">Setting BOOSTFPS</h3>
-              <p class="text-[11px] text-slate-400 mt-1">ไฟล์ตั้งค่าเพิ่ม FPS และลดแลค</p>
-            </div>
-            <div class="w-16 h-16 bg-slate-900 rounded-xl border border-white/10 flex items-center justify-center text-[10px] text-slate-500">Img</div>
-          </div>
-          <div onclick="switchPage('products', document.getElementById('nav-products'))" class="card-box rounded-2xl p-4 flex items-center justify-between cursor-pointer">
-            <div>
-              <h3 class="font-bold text-sm text-white">Setting FIVEM</h3>
-              <p class="text-[11px] text-slate-400 mt-1">กราฟิกและม็อด FiveM สุดลื่น</p>
-            </div>
-            <div class="w-16 h-16 bg-slate-900 rounded-xl border border-white/10 flex items-center justify-center text-[10px] text-slate-500">Img</div>
-          </div>
-          <div onclick="switchPage('download', document.getElementById('nav-download'))" class="card-box rounded-2xl p-4 flex items-center justify-between cursor-pointer">
-            <div>
-              <h3 class="font-bold text-sm text-white">Windows INSTALLER</h3>
-              <p class="text-[11px] text-slate-400 mt-1">ไฟล์ ISO และตัวติดตั้ง Windows</p>
-            </div>
-            <div class="w-16 h-16 bg-slate-900 rounded-xl border border-white/10 flex items-center justify-center text-[10px] text-slate-500">Img</div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- ==================== หน้า 2: สินค้า (PRODUCTS) ==================== -->
-    <div id="page-products" class="page-section space-y-6">
-      <div>
-        <h1 class="text-2xl font-bold text-white">สินค้าทั้งหมดในร้าน</h1>
-        <p class="text-xs text-slate-400 mt-1">เลือกแพ็กเกจหรือไฟล์ตั้งค่าที่ต้องการ</p>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="card-box rounded-2xl p-4 flex flex-col justify-between">
-          <div>
-            <div class="h-36 bg-slate-900 rounded-xl mb-3 flex items-center justify-center text-xs text-slate-500">[ รูปสินค้า ]</div>
-            <h3 class="font-bold text-sm text-white">TEEHID Toolbox Pro</h3>
-            <p class="text-[11px] text-slate-400 mt-1">เครื่องมือปรับแต่งระบบคอมพิวเตอร์เต็มรูปแบบ</p>
-          </div>
-          <div class="flex justify-between items-center mt-4 pt-3 border-t border-white/5">
-            <span class="text-cyan-400 font-bold text-sm">99 บาท</span>
-            <button onclick="switchPage('topup', document.getElementById('nav-topup'))" class="text-xs bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold px-3.5 py-1.5 rounded-xl transition">สั่งซื้อ →</button>
-          </div>
-        </div>
-        <div class="card-box rounded-2xl p-4 flex flex-col justify-between">
-          <div>
-            <div class="h-36 bg-slate-900 rounded-xl mb-3 flex items-center justify-center text-xs text-slate-500">[ รูปสินค้า ]</div>
-            <h3 class="font-bold text-sm text-white">Setting FiveM Ultimate</h3>
-            <p class="text-[11px] text-slate-400 mt-1">ภาพสวย FPS พุ่ง ไม่มีกระตุก</p>
-          </div>
-          <div class="flex justify-between items-center mt-4 pt-3 border-t border-white/5">
-            <span class="text-cyan-400 font-bold text-sm">150 บาท</span>
-            <button onclick="switchPage('topup', document.getElementById('nav-topup'))" class="text-xs bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold px-3.5 py-1.5 rounded-xl transition">สั่งซื้อ →</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ==================== หน้า 3: ดาวน์โหลด (DOWNLOAD) ==================== -->
-    <div id="page-download" class="page-section space-y-6">
-      <div class="text-center py-2">
-        <span class="text-[10px] tracking-widest uppercase bg-white/5 border border-white/10 text-slate-300 px-3 py-1 rounded-full">TEEHID DOWNLOAD</span>
-        <h1 class="text-3xl font-bold mt-3 text-white">โหลดไฟล์ของ <span class="text-cyan-400">TEEHID</span> ได้ที่นี่</h1>
-        <p class="text-xs text-slate-400 mt-1">ไฟล์โปรแกรม และ ISO รวมไว้ที่เดียว</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="card-box rounded-2xl p-4 flex flex-col justify-between">
-          <div>
-            <div class="grid grid-cols-2 rounded-xl overflow-hidden mb-3 text-center font-bold">
-              <div class="bg-red-600 py-3 px-2 text-white"><span class="text-[10px] bg-black/30 px-2 py-0.5 rounded-full">ก่อน</span><p class="text-base mt-1">✖ 144 FPS</p></div>
-              <div class="bg-emerald-500 py-3 px-2 text-slate-950"><span class="text-[10px] bg-white/40 px-2 py-0.5 rounded-full">หลัง</span><p class="text-base mt-1">✔ 488 FPS</p></div>
-            </div>
-            <h3 class="font-bold text-sm text-white">KernelOS Windows 10</h3>
-            <p class="text-[10px] text-slate-500 mt-1">Google Drive • อัปเดตล่าสุด</p>
-          </div>
-          <div class="grid grid-cols-2 gap-2 mt-4">
-            <a href="#" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-2 rounded-xl text-center transition">⬇ ดาวน์โหลด</a>
-            <a href="#" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs py-2 rounded-xl text-center transition">📄 ดูวิธีใช้</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ==================== หน้า 4: เติมเงิน (TOPUP) ==================== -->
-    <div id="page-topup" class="page-section max-w-lg mx-auto">
-      <div class="glass-panel rounded-2xl p-6 space-y-4">
-        <h2 class="text-lg font-bold text-white">💳 เติมเงิน / ช่องทางชำระเงิน</h2>
-        <p class="text-xs text-slate-400">สามารถโอนชำระเงินและส่งสลิปผ่าน Discord หรือติดต่อแอดมินโดยตรง</p>
-        <div class="bg-slate-900/80 border border-white/10 rounded-xl p-4 space-y-2 text-xs">
-          <p class="text-slate-300"><strong class="text-cyan-400">TrueMoney Wallet:</strong> 08X-XXX-XXXX (ชื่อบัญชีของคุณ)</p>
-          <p class="text-slate-300"><strong class="text-cyan-400">ธนาคารกสิกรไทย:</strong> XXX-X-XXXXX-X (ชื่อบัญชีของคุณ)</p>
-        </div>
-        <a href="#" target="_blank" class="block w-full bg-indigo-500 hover:bg-indigo-400 text-white font-semibold text-xs py-3 rounded-xl text-center transition">ทักแชทส่งสลิปที่ Discord →</a>
-      </div>
-    </div>
-
-    <!-- ==================== หน้า 5: Reset HWID ==================== -->
-    <div id="page-hwid" class="page-section max-w-lg mx-auto">
-      <div class="glass-panel rounded-2xl p-6 space-y-4">
-        <h2 class="text-lg font-bold text-white">🔄 แจ้งรีเซ็ต HWID</h2>
-        <p class="text-xs text-slate-400">กรอก License Key ของคุณเพื่อส่งคำขอรีเซ็ตเครื่อง</p>
-        <input type="text" placeholder="กรอกคีย์โปรแกรมของคุณ เช่น TEEHID-XXXX-XXXX" class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-500">
-        <button onclick="alert('ส่งคำขอ Reset HWID เรียบร้อยแล้ว! กรุณารอแอดมินอนุมัติหรือติดต่อใน Discord')" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-xs py-3 rounded-xl transition">ยืนยันการรีเซ็ต HWID</button>
-      </div>
-    </div>
-
-    <!-- ==================== หน้า 6: คำสั่งซื้อ (ORDERS) ==================== -->
-    <div id="page-orders" class="page-section max-w-2xl mx-auto">
-      <div class="glass-panel rounded-2xl p-6 text-center space-y-3">
-        <p class="text-3xl">🛍️</p>
-        <h2 class="text-base font-bold text-white">ประวัติคำสั่งซื้อ</h2>
-        <p class="text-xs text-slate-400">กรุณาเข้าสู่ระบบเพื่อดูประวัติการสั่งซื้อและคีย์ของคุณ</p>
-        <button onclick="openAuthModal('login')" class="bg-cyan-500 text-slate-950 font-semibold text-xs px-5 py-2.5 rounded-xl">เข้าสู่ระบบเลย</button>
-      </div>
-    </div>
-
-  </main>
-
-  <!-- ================= 3. หน้าต่างป๊อปอัป สมัครสมาชิก / เข้าสู่ระบบ ================= -->
-  <div id="authModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
-    <div class="glass-panel rounded-2xl p-6 max-w-sm w-full space-y-4 relative border border-white/15">
-      <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm">✖</button>
-      <h2 id="modalTitle" class="text-lg font-bold text-white">เข้าสู่ระบบ</h2>
-      <div class="space-y-3">
-        <input type="text" placeholder="ชื่อผู้ใช้งาน (Username)" class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white">
-        <input type="password" placeholder="รหัสผ่าน (Password)" class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white">
-        <button onclick="alert('ระบบสมาชิกเชื่อมต่อ Discord กำลังเปิดใช้งานเร็วๆ นี้!'); closeAuthModal();" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-xs py-2.5 rounded-xl transition">ดำเนินการต่อ</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="bg-[#0b1019] border-t border-slate-800/80 py-6 text-center text-xs text-slate-500 mt-10">
-    <p>© 2026 TEEHID SHOP. All rights reserved.</p>
-  </footer>
-
-  <!-- ================= 4. สคริปต์ควบคุมการกดเปลี่ยนหน้า ================= -->
-  <script>
-    function switchPage(pageId, btnElement) {
-      // ซ่อนทุกหน้าก่อน
-      document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
-      // แสดงหน้าที่เลือก
-      document.getElementById('page-' + pageId).classList.add('active');
-
-      // รีเซ็ตสีปุ่มเมนูทั้งหมด
-      document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.className = 'nav-btn text-slate-400 hover:text-white px-4 py-2 rounded-full flex items-center gap-1.5 transition';
-      });
-      // ไฮไลต์ปุ่มที่กดอยู่
-      if (btnElement) {
-        btnElement.className = 'nav-btn bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 px-4 py-2 rounded-full flex items-center gap-1.5 transition';
-      }
-    }
-
-    function openAuthModal(type) {
-      document.getElementById('modalTitle').innerText = (type === 'login') ? 'เข้าสู่ระบบ TEEHID SHOP' : 'สมัครสมาชิกใหม่';
-      document.getElementById('authModal').classList.remove('hidden');
-      document.getElementById('authModal').classList.add('flex');
-    }
-
-    function closeAuthModal() {
-      document.getElementById('authModal').classList.add('hidden');
-      document.getElementById('authModal').classList.remove('flex');
-    }
-  </script>
-
 </body>
 </html>

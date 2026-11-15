@@ -63,6 +63,8 @@
         <button onclick="filterCategory('all', this)" class="cat-btn w-full text-left px-3 py-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 font-medium transition">📁 ไฟล์ทั้งหมด</button>
         <button onclick="filterCategory('fps', this)" class="cat-btn w-full text-left px-3 py-2.5 rounded-xl text-slate-300 hover:bg-white/5 transition">⚡ ไฟล์เพิ่ม FPS / Boost</button>
         <button onclick="filterCategory('windows', this)" class="cat-btn w-full text-left px-3 py-2.5 rounded-xl text-slate-300 hover:bg-white/5 transition">🪟 Windows ตัวปรับแต่ง</button>
+        <button onclick="filterCategory('reshade', this)" class="cat-btn w-full text-left px-3 py-2.5 rounded-xl text-slate-300 hover:bg-white/5 transition">🎨 ReShade กราฟิก</button>
+        <button onclick="filterCategory('mods', this)" class="cat-btn w-full text-left px-3 py-2.5 rounded-xl text-slate-300 hover:bg-white/5 transition">🧩 MODS / มอดเกม</button>
         <button onclick="filterCategory('tool', this)" class="cat-btn w-full text-left px-3 py-2.5 rounded-xl text-slate-300 hover:bg-white/5 transition">🛠️ เครื่องมือและตั้งค่า</button>
       </div>
     </aside>
@@ -124,6 +126,44 @@
           </div>
         </div>
 
+        <!-- การ์ดที่ 3: ReShade Preset -->
+        <div class="file-card item-card rounded-2xl p-4 flex flex-col justify-between" data-category="reshade" data-name="reshade preset graphics">
+          <div>
+            <div class="h-32 bg-slate-900/80 rounded-xl mb-3 flex items-center justify-center text-xs text-slate-500 border border-white/5">
+              [ พรีวิวรูปภาพ ReShade ]
+            </div>
+            <h3 class="font-bold text-sm text-white">GUTEE ReShade Preset</h3>
+            <p class="text-[11px] text-slate-400 mt-1">ตั้งค่ากราฟิกภาพสวย สมจริง สีสันคมชัดเล่นเกมสะใจ</p>
+            <div class="flex gap-2 mt-2">
+              <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">ReShade</span>
+              <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">Preset</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mt-5 pt-3 border-t border-white/5">
+            <a href="https://drive.google.com" target="_blank" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-2 rounded-xl text-center transition">⬇ ดาวน์โหลด</a>
+            <button onclick="alert('รายละเอียด: พรีเซ็ต ReShade ปรับแต่งกราฟิกเกม')" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs py-2 rounded-xl text-center transition">📄 รายละเอียด</button>
+          </div>
+        </div>
+
+        <!-- การ์ดที่ 4: MODS -->
+        <div class="file-card item-card rounded-2xl p-4 flex flex-col justify-between" data-category="mods" data-name="mods and custom pack">
+          <div>
+            <div class="h-32 bg-slate-900/80 rounded-xl mb-3 flex items-center justify-center text-xs text-slate-500 border border-white/5">
+              [ พรีวิวรูปภาพ MODS ]
+            </div>
+            <h3 class="font-bold text-sm text-white">Custom Game Mods Pack</h3>
+            <p class="text-[11px] text-slate-400 mt-1">รวมมอดแต่งตัวละคร เสียง และกราฟิกเสริมในเกม</p>
+            <div class="flex gap-2 mt-2">
+              <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">MODS</span>
+              <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">Addon</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mt-5 pt-3 border-t border-white/5">
+            <a href="https://drive.google.com" target="_blank" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-2 rounded-xl text-center transition">⬇ ดาวน์โหลด</a>
+            <button onclick="alert('รายละเอียด: แพ็กเกจรวมมอดเกมเสริม')" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs py-2 rounded-xl text-center transition">📄 รายละเอียด</button>
+          </div>
+        </div>
+
       </div>
     </main>
 
@@ -134,8 +174,8 @@
       </div>
       <div class="text-xs text-slate-400 space-y-2">
         <div class="bg-[#070a10] p-3 rounded-xl border border-white/5">
-          <p class="font-medium text-slate-200">อัปเดตลิงก์ใหม่</p>
-          <p class="text-[11px] text-slate-500 mt-0.5">เพิ่มไฟล์ดาวน์โหลดชุดใหม่เรียบร้อยแล้ว สามารถกดโหลดได้เลย</p>
+          <p class="font-medium text-slate-200">อัปเดตหมวดหมู่ใหม่</p>
+          <p class="text-[11px] text-slate-500 mt-0.5">เพิ่มหมวด ReShade และ MODS แยกย่อยให้เลือกใช้งานได้ง่ายขึ้นแล้วครับ</p>
         </div>
       </div>
     </aside>

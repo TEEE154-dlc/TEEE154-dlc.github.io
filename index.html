@@ -86,7 +86,26 @@
 
       <div id="fileGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4 scroll-mt-24">
         
-        <!-- การ์ดสินค้าที่ 1: Windows AuraOS (แก้เป็นหมวด Windows แล้ว) -->
+        <!-- การ์ดที่ 1: KernelOS Windows 10 -->
+        <div class="file-card item-card rounded-2xl p-4 flex flex-col justify-between" data-category="windows" data-name="kernelos windows 10">
+          <div>
+            <div class="h-32 bg-slate-900/80 rounded-xl mb-3 overflow-hidden border border-white/5">
+              <img src="KernelOS/Wallpaper.jpg" alt="Preview" class="w-full h-full object-cover">
+            </div>
+            <h3 class="font-bold text-sm text-white">KernelOS Windows 10</h3>
+            <p class="text-[11px] text-slate-400 mt-1">ไฟล์ระบบปรับแต่งเพื่อการเล่นเกมโดยเฉพาะ ลื่น ไร้ดีเลย์</p>
+            <div class="flex gap-2 mt-2">
+              <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">Windows OS</span>
+              <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">Google Drive</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mt-5 pt-3 border-t border-white/5">
+            <a href="https://drive.google.com" target="_blank" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-2 rounded-xl text-center transition">⬇ ดาวน์โหลด</a>
+            <button onclick="alert('รายละเอียด: KernelOS ตัวปรับแต่งพิเศษ')" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs py-2 rounded-xl text-center transition">📄 รายละเอียด</button>
+          </div>
+        </div>
+
+        <!-- การ์ดที่ 2: Windows AuraOS -->
         <div class="file-card item-card rounded-2xl p-4 flex flex-col justify-between" data-category="windows" data-name="windows auraos">
           <div>
             <div class="h-32 bg-slate-900/80 rounded-xl mb-3 overflow-hidden border border-white/5">
@@ -102,25 +121,6 @@
           <div class="grid grid-cols-2 gap-2 mt-5 pt-3 border-t border-white/5">
             <a href="https://drive.google.com" target="_blank" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-2 rounded-xl text-center transition">⬇ ดาวน์โหลด</a>
             <button onclick="alert('รายละเอียด: Windows AuraOS ตัวปรับแต่งพิเศษ')" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs py-2 rounded-xl text-center transition">📄 รายละเอียด</button>
-          </div>
-        </div>
-
-        <!-- การ์ดสินค้าที่ 2: TEEHID Toolbox v1 (อยู่ในหมวด Tool) -->
-        <div class="file-card item-card rounded-2xl p-4 flex flex-col justify-between" data-category="tool" data-name="teehid toolbox v1">
-          <div>
-            <div class="h-32 bg-slate-900/80 rounded-xl mb-3 flex items-center justify-center text-xs text-slate-500 border border-white/5">
-              [ พรีวิวไฟล์รูป/ไอคอน ]
-            </div>
-            <h3 class="font-bold text-sm text-white">TEEHID Toolbox v1</h3>
-            <p class="text-[11px] text-slate-400 mt-1">รวมสคริปต์ปรับแต่งและจัดการระบบเครื่องคอมพิวเตอร์</p>
-            <div class="flex gap-2 mt-2">
-              <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">Toolbox</span>
-              <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">Direct Link</span>
-            </div>
-          </div>
-          <div class="grid grid-cols-2 gap-2 mt-5 pt-3 border-t border-white/5">
-            <a href="https://drive.google.com" target="_blank" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-2 rounded-xl text-center transition">⬇ ดาวน์โหลด</a>
-            <button onclick="alert('รายละเอียด: โปรแกรมรวบรวมเครื่องมือปรับแต่งวินโดว์')" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs py-2 rounded-xl text-center transition">📄 รายละเอียด</button>
           </div>
         </div>
 

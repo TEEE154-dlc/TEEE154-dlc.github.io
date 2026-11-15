@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GUTEE Shop - Download Center</title>
+  <title>TEEHID Shop - Download Center</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -33,7 +33,7 @@
   <nav class="bg-[#0b1019] border-b border-slate-800/80 px-6 py-3.5 flex justify-between items-center sticky top-0 z-50">
     <div class="flex items-center gap-3">
       <div class="w-8 h-8 rounded-lg bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-400 font-bold text-sm">T</div>
-      <span class="font-bold text-base tracking-wide text-white">GUTEE Shop</span>
+      <span class="font-bold text-base tracking-wide text-white">TEEHID Shop</span>
     </div>
     
     <!-- เมนูตรงกลาง -->
@@ -41,11 +41,11 @@
       <a href="javascript:void(0)" onclick="resetHome()" class="text-white hover:text-cyan-400 transition">หน้าแรก</a>
       <a href="#fileGrid" onclick="filterCategory('all', document.querySelector('.cat-btn'))" class="hover:text-white transition">ดาวน์โหลดไฟล์</a>
       <button onclick="openTopupModal()" class="hover:text-cyan-400 transition">💳 เติมเงิน</button>
-      <a href="https://discord.gg/5GEbu84bXQ" target="_blank" class="hover:text-cyan-400 transition">ติดต่อ/Discord</a>
+      <a href="https://discord.gg/ใส่ลิงก์ดิสคอร์ดตรงนี้" target="_blank" class="hover:text-cyan-400 transition">ติดต่อ/Discord</a>
     </div>
 
     <!-- ปุ่มด้านขวา -->
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-3" id="userAuthArea">
       <button onclick="openAuthModal('register')" class="text-xs text-slate-300 hover:text-white px-2 py-1 transition">สมัครสมาชิก</button>
       <button onclick="openAuthModal('login')" class="text-xs bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold px-4 py-2 rounded-xl transition">เข้าสู่ระบบ</button>
     </div>
@@ -72,7 +72,7 @@
       
       <div class="text-center py-4 panel-box rounded-2xl p-6">
         <h1 class="text-2xl md:text-3xl font-bold text-white">
-          ศูนย์รวมดาวน์โหลดไฟล์ <span class="text-cyan-400">GUTEE</span>
+          ศูนย์รวมดาวน์โหลดไฟล์ <span class="text-cyan-400">TEEHID</span>
         </h1>
         <p class="text-xs text-slate-400 mt-1">
           แหล่งรวมไฟล์โปรแกรม ตัวช่วยตั้งค่า และตัวติดตั้งระบบ
@@ -86,38 +86,40 @@
 
       <div id="fileGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4 scroll-mt-24">
         
-        <div class="file-card item-card rounded-2xl p-4 flex flex-col justify-between" data-category="windows" data-name="windows custom build">
+        <!-- การ์ดสินค้าที่ 1: Windows AuraOS (แก้เป็นหมวด Windows แล้ว) -->
+        <div class="file-card item-card rounded-2xl p-4 flex flex-col justify-between" data-category="windows" data-name="windows auraos">
           <div>
-            <div class="h-32 bg-slate-900/80 rounded-xl mb-3 flex items-center justify-center text-xs text-slate-500 border border-white/5">
-             <img src="KernelOS/Wallpaper.png" alt="Preview" class="w-full h-full object-cover">
+            <div class="h-32 bg-slate-900/80 rounded-xl mb-3 overflow-hidden border border-white/5">
+              <img src="Auraos/Wallpaper.jpg" alt="Preview" class="w-full h-full object-cover">
             </div>
-            <h3 class="font-bold text-sm text-white">Windows os</h3>
-            <p class="text-[11px] text-slate-400 mt-1">windows kernelos</p>
+            <h3 class="font-bold text-sm text-white">Windows AuraOS</h3>
+            <p class="text-[11px] text-slate-400 mt-1">ไฟล์ระบบปรับแต่งเพื่อความลื่นไหลและเสถียรภาพสูงสุด</p>
             <div class="flex gap-2 mt-2">
               <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">Windows OS</span>
               <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">Google Drive</span>
             </div>
           </div>
           <div class="grid grid-cols-2 gap-2 mt-5 pt-3 border-t border-white/5">
-            <a href="https://kernelos.org/" target="_blank" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-2 rounded-xl text-center transition">⬇ ดาวน์โหลด</a>
-            <button onclick="alert('รายละเอียด: ไฟล์ระบบตัวนี้ได้รับการปรับแต่งพิเศษ')" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs py-2 rounded-xl text-center transition">📄 รายละเอียด</button>
+            <a href="https://drive.google.com" target="_blank" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-2 rounded-xl text-center transition">⬇ ดาวน์โหลด</a>
+            <button onclick="alert('รายละเอียด: Windows AuraOS ตัวปรับแต่งพิเศษ')" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs py-2 rounded-xl text-center transition">📄 รายละเอียด</button>
           </div>
         </div>
 
-        <div class="file-card item-card rounded-2xl p-4 flex flex-col justify-between" data-category="tool" data-name="gutee toolbox v1">
+        <!-- การ์ดสินค้าที่ 2: TEEHID Toolbox v1 (อยู่ในหมวด Tool) -->
+        <div class="file-card item-card rounded-2xl p-4 flex flex-col justify-between" data-category="tool" data-name="teehid toolbox v1">
           <div>
             <div class="h-32 bg-slate-900/80 rounded-xl mb-3 flex items-center justify-center text-xs text-slate-500 border border-white/5">
-              <img src="Auraos/Wallpaper.jpg" alt="Preview" class="w-full h-full object-cover">
+              [ พรีวิวไฟล์รูป/ไอคอน ]
             </div>
-            <h3 class="font-bold text-sm text-white">Windows OS</h3>
-            <p class="text-[11px] text-slate-400 mt-1">Windows AuraOS</p>
+            <h3 class="font-bold text-sm text-white">TEEHID Toolbox v1</h3>
+            <p class="text-[11px] text-slate-400 mt-1">รวมสคริปต์ปรับแต่งและจัดการระบบเครื่องคอมพิวเตอร์</p>
             <div class="flex gap-2 mt-2">
               <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">Toolbox</span>
               <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">Direct Link</span>
             </div>
           </div>
           <div class="grid grid-cols-2 gap-2 mt-5 pt-3 border-t border-white/5">
-            <a href="https://drive.google.com/file/d/1jcujCKGXTwYJ7kaxgaO2CCrKETkhyBP-/view?usp=sharing" target="_blank" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-2 rounded-xl text-center transition">⬇ ดาวน์โหลด</a>
+            <a href="https://drive.google.com" target="_blank" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-2 rounded-xl text-center transition">⬇ ดาวน์โหลด</a>
             <button onclick="alert('รายละเอียด: โปรแกรมรวบรวมเครื่องมือปรับแต่งวินโดว์')" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs py-2 rounded-xl text-center transition">📄 รายละเอียด</button>
           </div>
         </div>
@@ -158,20 +160,34 @@
       <button onclick="closeModals()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm">✖</button>
       <h2 id="authTitle" class="text-base font-bold text-white">เข้าสู่ระบบ</h2>
       <div class="space-y-3">
-        <input type="text" placeholder="ชื่อผู้ใช้งาน / Username" class="w-full bg-[#070a10] border border-white/10 rounded-xl px-4 py-2 text-xs text-white">
-        <input type="password" placeholder="รหัสผ่าน / Password" class="w-full bg-[#070a10] border border-white/10 rounded-xl px-4 py-2 text-xs text-white">
-        <button onclick="alert('ยินดีต้อนรับเข้าสู่ระบบ GUTEE Shop'); closeModals();" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-xs py-2.5 rounded-xl transition">ยืนยัน</button>
+        <input type="text" id="usernameInput" placeholder="ชื่อผู้ใช้งาน / Username" class="w-full bg-[#070a10] border border-white/10 rounded-xl px-4 py-2 text-xs text-white focus:outline-none focus:border-cyan-500">
+        <input type="password" id="passwordInput" placeholder="รหัสผ่าน / Password" class="w-full bg-[#070a10] border border-white/10 rounded-xl px-4 py-2 text-xs text-white focus:outline-none focus:border-cyan-500">
+        <button onclick="handleAuth()" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-xs py-2.5 rounded-xl transition">ยืนยัน</button>
       </div>
     </div>
   </div>
 
   <!-- Footer -->
   <footer class="bg-[#0b1019] border-t border-slate-800/80 py-6 text-center text-xs text-slate-500 mt-10">
-    <p>© 2026 GTEE Shop. All rights reserved.</p>
+    <p>© 2026 TEEHID Shop. All rights reserved.</p>
   </footer>
 
   <!-- Script ควบคุมการทำงาน -->
   <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedUser = localStorage.getItem('teehid_user');
+      if (savedUser) {
+        document.getElementById('userAuthArea').innerHTML = `
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-cyan-400 font-medium">👤 ${savedUser}</span>
+            <button onclick="logout()" class="text-xs bg-red-500/20 text-red-400 hover:bg-red-500/30 px-3 py-1.5 rounded-xl transition">ออกจากระบบ</button>
+          </div>
+        `;
+      }
+    });
+
+    let authMode = 'login';
+
     function resetHome() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       filterCategory('all', document.querySelector('.cat-btn'));
@@ -207,9 +223,27 @@
     }
 
     function openAuthModal(type) {
+      authMode = type;
       document.getElementById('authTitle').innerText = (type === 'login') ? 'เข้าสู่ระบบ' : 'สมัครสมาชิก';
       document.getElementById('authModal').classList.remove('hidden');
       document.getElementById('authModal').classList.add('flex');
+    }
+
+    function handleAuth() {
+      const username = document.getElementById('usernameInput').value.trim();
+      if (!username) {
+        alert('กรุณากรอกชื่อผู้ใช้งานครับ');
+        return;
+      }
+      localStorage.setItem('teehid_user', username);
+      alert((authMode === 'login' ? 'เข้าสู่ระบบสำเร็จ ยินดีต้อนรับ: ' : 'สมัครสมาชิกสำเร็จ: ') + username);
+      closeModals();
+      location.reload();
+    }
+
+    function logout() {
+      localStorage.removeItem('teehid_user');
+      location.reload();
     }
 
     function closeModals() {

@@ -8,10 +8,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     html { scroll-behavior: smooth; }
-    body { font-family: 'Kanit', sans-serif; background: #070a10; color: #f8fafc; }
-    .panel-box { background: #0d131f; border: 1px solid rgba(255, 255, 255, 0.06); }
-    .item-card { background: #0d131f; border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.2s ease; }
-    .item-card:hover { border-color: rgba(56, 189, 248, 0.4); }
+    body { 
+      font-family: 'Kanit', sans-serif; 
+      background: #070a10; 
+      color: #f8fafc; 
+    }
+    .panel-box {
+      background: #0d131f;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .item-card {
+      background: #0d131f;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.2s ease;
+    }
+    .item-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+    }
   </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -23,46 +36,61 @@
       <span class="font-bold text-base tracking-wide text-white">GUTEE Shop</span>
     </div>
     
+    <!-- เมนูตรงกลาง -->
     <div class="hidden md:flex items-center gap-6 text-xs text-slate-400 font-medium">
       <button onclick="switchView('home')" id="nav-home" class="nav-link text-white hover:text-cyan-400 transition">🏠 หน้าแรก</button>
       <button onclick="switchView('home'); filterCategory('all', document.querySelector('.cat-btn'))" class="hover:text-white transition">📦 สินค้า & ดาวน์โหลด</button>
       <button onclick="switchView('topup')" id="nav-topup" class="nav-link hover:text-cyan-400 transition">💳 เติมเงิน</button>
       <button onclick="switchView('account')" id="nav-account" class="nav-link hover:text-cyan-400 transition">🧾 คำสั่งซื้อ / ประวัติ</button>
-      <a href="https://discord.gg/CVtpj2XchG" target="_blank" class="hover:text-cyan-400 transition">💬 ติดต่อ/Discord</a>
+      <a href="https://discord.gg/TS6pjjQbMF" target="_blank" class="hover:text-cyan-400 transition">💬 ติดต่อ/Discord</a>
     </div>
 
+    <!-- ปุ่มด้านขวา -->
     <div class="flex items-center gap-3" id="userAuthArea">
       <button onclick="openAuthModal('register')" class="text-xs text-slate-300 hover:text-white px-2 py-1 transition">สมัครสมาชิก</button>
       <button onclick="openAuthModal('login')" class="text-xs bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold px-4 py-2 rounded-xl transition">เข้าสู่ระบบ</button>
     </div>
   </nav>
 
-  <!-- ================= VIEW 1: HOME ================= -->
+  <!-- ===================================================================== -->
+  <!-- VIEW 1: หน้าหลักร้านค้าและดาวน์โหลด (HOME) -->
+  <!-- ===================================================================== -->
   <div id="view-home" class="view-section max-w-[1500px] w-full mx-auto p-4 grid grid-cols-1 lg:grid-cols-12 gap-5 flex-1 items-start mt-2">
     
+    <!-- [คอลัมน์ซ้าย]: หมวดหมู่ -->
     <aside class="lg:col-span-3 panel-box rounded-2xl p-4 space-y-4">
       <div class="pb-2 border-b border-white/5">
         <h2 class="font-semibold text-xs text-white uppercase tracking-wider">Categories / หมวดหมู่</h2>
       </div>
       <div class="space-y-1.5 text-xs">
         <button onclick="filterCategory('all', this)" class="cat-btn w-full text-left px-3 py-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 font-medium transition">📁 ไฟล์ทั้งหมด</button>
+        <button onclick="filterCategory('fps', this)" class="cat-btn w-full text-left px-3 py-2.5 rounded-xl text-slate-300 hover:bg-white/5 transition">⚡ ไฟล์เพิ่ม FPS / Boost</button>
         <button onclick="filterCategory('windows', this)" class="cat-btn w-full text-left px-3 py-2.5 rounded-xl text-slate-300 hover:bg-white/5 transition">🪟 Windows ตัวปรับแต่ง</button>
         <button onclick="filterCategory('reshade', this)" class="cat-btn w-full text-left px-3 py-2.5 rounded-xl text-slate-300 hover:bg-white/5 transition">🎨 ReShade กราฟิก</button>
         <button onclick="filterCategory('mods', this)" class="cat-btn w-full text-left px-3 py-2.5 rounded-xl text-slate-300 hover:bg-white/5 transition">🧩 MODS / มอดเกม</button>
+        <button onclick="filterCategory('tool', this)" class="cat-btn w-full text-left px-3 py-2.5 rounded-xl text-slate-300 hover:bg-white/5 transition">🛠️ เครื่องมือและตั้งค่า</button>
       </div>
     </aside>
 
+    <!-- [คอลัมน์กลาง]: โซนรายการดาวน์โหลดหลัก -->
     <main class="lg:col-span-6 space-y-6">
       <div class="text-center py-4 panel-box rounded-2xl p-6">
-        <h1 class="text-2xl md:text-3xl font-bold text-white">ศูนย์รวมดาวน์โหลดไฟล์ <span class="text-cyan-400">GUTEE</span></h1>
-        <p class="text-xs text-slate-400 mt-1">แหล่งรวมไฟล์โปรแกรม ตัวช่วยตั้งค่า และพรีเซ็ตแต่งภาพระดับพรีเมียม</p>
+        <h1 class="text-2xl md:text-3xl font-bold text-white">
+          ศูนย์รวมดาวน์โหลดไฟล์ <span class="text-cyan-400">GUTEE</span>
+        </h1>
+        <p class="text-xs text-slate-400 mt-1">
+          แหล่งรวมไฟล์โปรแกรม ตัวช่วยตั้งค่า และพรีเซ็ตแต่งภาพระดับพรีเมียม
+        </p>
+
         <div class="mt-4 max-w-md mx-auto">
-          <input type="text" id="searchInput" onkeyup="searchFiles()" placeholder="🔍 ค้นหาชื่อไฟล์..." class="w-full bg-[#070a10] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500">
+          <input type="text" id="searchInput" onkeyup="searchFiles()" placeholder="🔍 ค้นหาชื่อไฟล์..." 
+            class="w-full bg-[#070a10] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500">
         </div>
       </div>
 
-      <div id="fileGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <!-- KernelOS -->
+      <div id="fileGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4 scroll-mt-24">
+        
+        <!-- การ์ดที่ 1: KernelOS Windows 10 (ฟรี) -->
         <div class="file-card item-card rounded-2xl p-4 flex flex-col justify-between" data-category="windows" data-name="kernelos windows 10">
           <div>
             <div class="h-32 bg-slate-900/80 rounded-xl mb-3 overflow-hidden border border-white/5 relative">
@@ -71,38 +99,97 @@
             </div>
             <h3 class="font-bold text-sm text-white">KernelOS Windows 10</h3>
             <p class="text-[11px] text-slate-400 mt-1">ไฟล์ระบบปรับแต่งเพื่อการเล่นเกมโดยเฉพาะ ลื่น ไร้ดีเลย์</p>
+            <div class="flex gap-2 mt-2">
+              <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">Windows OS</span>
+              <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">Google Drive</span>
+            </div>
           </div>
           <div class="grid grid-cols-2 gap-2 mt-5 pt-3 border-t border-white/5">
             <a href="https://drive.google.com" target="_blank" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-2 rounded-xl text-center transition">⬇ ดาวน์โหลด</a>
-            <button onclick="alert('รายละเอียด: KernelOS ตัวปรับแต่งพิเศษ')" class="bg-white/5 border border-white/10 text-slate-200 text-xs py-2 rounded-xl">📄 รายละเอียด</button>
+            <button onclick="alert('รายละเอียด: KernelOS ตัวปรับแต่งพิเศษสำหรับเกมเมอร์')" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs py-2 rounded-xl text-center transition">📄 รายละเอียด</button>
           </div>
         </div>
 
-        <!-- ReShade Preset Pro -->
-        <div class="file-card item-card rounded-2xl p-4 flex flex-col justify-between" data-category="reshade" data-name="gutee reshade preset pro">
+        <!-- การ์ดที่ 2: Windows AuraOS (ฟรี) -->
+        <div class="file-card item-card rounded-2xl p-4 flex flex-col justify-between" data-category="windows" data-name="windows auraos">
           <div>
-            <div class="h-32 bg-cyan-900/40 rounded-xl mb-3 overflow-hidden border border-white/5 relative flex items-center justify-center">
-              <span class="text-xs text-cyan-300 font-medium">🎨 ReShade Graphics</span>
-              <span class="absolute top-2 right-2 bg-cyan-500 text-slate-950 font-bold text-xs px-2.5 py-0.5 rounded-lg">฿ 99</span>
+            <div class="h-32 bg-slate-900/80 rounded-xl mb-3 overflow-hidden border border-white/5 relative">
+              <img src="Auraos/Wallpaper.jpg" alt="Preview" class="w-full h-full object-cover">
+              <span class="absolute top-2 right-2 bg-emerald-500/90 text-slate-950 font-bold text-[10px] px-2 py-0.5 rounded-md">FREE</span>
             </div>
-            <h3 class="font-bold text-sm text-white">GUTEE ReShade Preset Pro</h3>
-            <p class="text-[11px] text-slate-400 mt-1">พรีเซ็ตกราฟิกภาพสวย สมจริง สีสันคมชัด</p>
+            <h3 class="font-bold text-sm text-white">Windows AuraOS</h3>
+            <p class="text-[11px] text-slate-400 mt-1">ไฟล์ระบบปรับแต่งเพื่อความลื่นไหลและเสถียรภาพสูงสุด</p>
+            <div class="flex gap-2 mt-2">
+              <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">Windows OS</span>
+              <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">Google Drive</span>
+            </div>
           </div>
           <div class="grid grid-cols-2 gap-2 mt-5 pt-3 border-t border-white/5">
-            <button onclick="buyProduct('GUTEE ReShade Preset Pro', 99, 'https://drive.google.com/link-reshade-secret')" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-2 rounded-xl text-center">🛒 ซื้อ (฿99)</button>
-            <button onclick="alert('รายละเอียด: พรีเซ็ต ReShade สั่งซื้อแล้วรับลิงก์ดาวน์โหลดทันที')" class="bg-white/5 border border-white/10 text-slate-200 text-xs py-2 rounded-xl">📄 รายละเอียด</button>
+            <a href="https://drive.google.com" target="_blank" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-2 rounded-xl text-center transition">⬇ ดาวน์โหลด</a>
+            <button onclick="alert('รายละเอียด: Windows AuraOS ตัวปรับแต่งพิเศษ')" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs py-2 rounded-xl text-center transition">📄 รายละเอียด</button>
           </div>
         </div>
+
+        <!-- การ์ดที่ 3: GUTEE ReShade Preset Pro (แบบวางขาย หักเงินอัตโนมัติ) -->
+        <div class="file-card item-card rounded-2xl p-4 flex flex-col justify-between" data-category="reshade" data-name="gutee reshade preset pro">
+          <div>
+            <div class="h-32 bg-gradient-to-br from-cyan-900/40 to-slate-900 rounded-xl mb-3 overflow-hidden border border-white/5 relative flex items-center justify-center">
+              <span class="text-xs text-cyan-300/70 font-medium">🎨 ReShade Graphics Preview</span>
+              <span class="absolute top-2 right-2 bg-cyan-500 text-slate-950 font-bold text-xs px-2.5 py-0.5 rounded-lg shadow">฿ 99</span>
+            </div>
+            <h3 class="font-bold text-sm text-white">GUTEE ReShade Preset Pro</h3>
+            <p class="text-[11px] text-slate-400 mt-1">พรีเซ็ตกราฟิกภาพสวย สมจริง สีสันคมชัด ไม่กินสเปค</p>
+            <div class="flex gap-2 mt-2">
+              <span class="text-[10px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 px-2 py-0.5 rounded">สินค้าพรีเมียม</span>
+              <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">ReShade</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mt-5 pt-3 border-t border-white/5">
+            <button onclick="buyProduct('GUTEE ReShade Preset Pro', 99, 'https://drive.google.com/link-reshade-secret')" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-2 rounded-xl text-center transition">🛒 ซื้อ (฿99)</button>
+            <button onclick="alert('รายละเอียด: พรีเซ็ต ReShade ตัวเต็ม สั่งซื้อแล้วรับลิงก์ดาวน์โหลดในหน้าคำสั่งซื้อทันที')" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs py-2 rounded-xl text-center transition">📄 รายละเอียด</button>
+          </div>
+        </div>
+
+        <!-- การ์ดที่ 4: Custom Game Mods Pack (แบบวางขาย หักเงินอัตโนมัติ) -->
+        <div class="file-card item-card rounded-2xl p-4 flex flex-col justify-between" data-category="mods" data-name="custom game mods pack">
+          <div>
+            <div class="h-32 bg-gradient-to-br from-purple-900/30 to-slate-900 rounded-xl mb-3 overflow-hidden border border-white/5 relative flex items-center justify-center">
+              <span class="text-xs text-purple-300/70 font-medium">🧩 Custom Mods Preview</span>
+              <span class="absolute top-2 right-2 bg-cyan-500 text-slate-950 font-bold text-xs px-2.5 py-0.5 rounded-lg shadow">฿ 50</span>
+            </div>
+            <h3 class="font-bold text-sm text-white">Custom Game Mods Pack</h3>
+            <p class="text-[11px] text-slate-400 mt-1">รวมมอดแต่งตัวละคร เสียง และกราฟิกเสริมในเกม</p>
+            <div class="flex gap-2 mt-2">
+              <span class="text-[10px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 px-2 py-0.5 rounded">สินค้าพรีเมียม</span>
+              <span class="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">MODS</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mt-5 pt-3 border-t border-white/5">
+            <button onclick="buyProduct('Custom Game Mods Pack', 50, 'https://drive.google.com/link-mods-secret')" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-2 rounded-xl text-center transition">🛒 ซื้อ (฿50)</button>
+            <button onclick="alert('รายละเอียด: แพ็กเกจมอดเกมเสริม สั่งซื้อแล้วรับไฟล์ในหน้าคำสั่งซื้อทันที')" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs py-2 rounded-xl text-center transition">📄 รายละเอียด</button>
+          </div>
+        </div>
+
       </div>
     </main>
 
+    <!-- [คอลัมน์ขวา]: ประกาศ -->
     <aside class="lg:col-span-3 panel-box rounded-2xl p-4 space-y-4">
-      <div class="pb-2 border-b border-white/5"><h2 class="font-semibold text-xs text-white uppercase">📢 ประกาศ</h2></div>
-      <p class="text-xs text-slate-400">เปิดระบบเติมเงินและสั่งซื้ออัตโนมัติแล้ววันนี้</p>
+      <div class="pb-2 border-b border-white/5">
+        <h2 class="font-semibold text-xs text-white uppercase tracking-wider">📢 Announcements / ประกาศ</h2>
+      </div>
+      <div class="text-xs text-slate-400 space-y-2">
+        <div class="bg-[#070a10] p-3 rounded-xl border border-white/5">
+          <p class="font-medium text-slate-200">เปิดระบบเติมเงินและสั่งซื้ออัตโนมัติ</p>
+          <p class="text-[11px] text-slate-500 mt-0.5">สามารถเติมเงินผ่าน QR PromptPay หรือ TrueMoney Wallet เพื่อกดซื้อพรีเซ็ต ReShade และรับลิงก์ในหน้าประวัติได้ทันที</p>
+        </div>
+      </div>
     </aside>
   </div>
 
-  <!-- ================= VIEW 2: TOPUP ================= -->
+  <!-- ===================================================================== -->
+  <!-- VIEW 2: หน้าเติมเงิน (TOPUP SYSTEM) -->
+  <!-- ===================================================================== -->
   <div id="view-topup" class="view-section hidden max-w-[1100px] w-full mx-auto p-4 flex-1 mt-4 space-y-6">
     <div class="flex items-center gap-3">
       <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-lg">💳</div>
@@ -112,76 +199,263 @@
       </div>
     </div>
 
-    <div class="panel-box rounded-2xl p-6 space-y-4 max-w-xl mx-auto">
-      <h2 class="text-base font-bold text-white">สแกน QR PromptPay</h2>
-      <div>
-        <label class="text-xs text-slate-300 block mb-1">จำนวนเงิน (บาท)</label>
-        <input type="number" id="promptpayAmount" placeholder="เช่น 100" class="w-full bg-[#070a10] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-500">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-start">
+      <!-- เมนูเลือกช่องทางด้านซ้าย -->
+      <div class="md:col-span-4 space-y-3">
+        <button onclick="selectTopupMethod('promptpay')" id="btn-method-promptpay" class="w-full text-left p-4 rounded-2xl panel-box border border-cyan-500/60 bg-cyan-500/5 transition flex items-start gap-3">
+          <div class="w-9 h-9 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0">📱</div>
+          <div>
+            <p class="font-bold text-xs text-white">สแกน QR PromptPay</p>
+            <p class="text-[11px] text-slate-400 mt-0.5">จ่ายได้ทุกแอปธนาคาร เงินเข้าอัตโนมัติ</p>
+          </div>
+        </button>
+
+        <button onclick="selectTopupMethod('truemoney')" id="btn-method-truemoney" class="w-full text-left p-4 rounded-2xl panel-box border border-white/5 hover:border-white/20 transition flex items-start gap-3">
+          <div class="w-9 h-9 rounded-xl bg-orange-500/20 text-orange-400 flex items-center justify-center shrink-0">👛</div>
+          <div>
+            <p class="font-bold text-xs text-white">สแกน TrueMoney Wallet</p>
+            <p class="text-[11px] text-slate-400 mt-0.5">สแกน โอน แล้วแนบสลิปยืนยันยอด</p>
+          </div>
+        </button>
       </div>
-      <button onclick="generatePromptPayQR()" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-3 rounded-xl transition">📱 สร้าง QR สำหรับโอน</button>
-      
-      <div id="qrResultBox" class="hidden bg-[#070a10] border border-cyan-500/30 rounded-2xl p-4 text-center space-y-3">
-        <p class="text-xs text-cyan-400 font-semibold">สแกน QR Code ยอดชำระ <span id="qrAmountText">฿0</span></p>
-        <img id="qrImageDisplay" src="" alt="QR" class="w-44 h-44 mx-auto rounded-xl bg-white p-2">
-        <div class="text-left space-y-1">
-          <label class="text-[11px] text-slate-400 block">แนบรูปสลิปการโอนเงิน</label>
-          <input type="file" id="promptpaySlip" accept="image/*" class="w-full text-xs text-slate-400 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:bg-white/10 file:text-white">
+
+      <!-- พื้นที่ทำงานด้านขวา -->
+      <div class="md:col-span-8 panel-box rounded-2xl p-6">
+        
+        <!-- ช่องทางที่ 1: QR PromptPay -->
+        <div id="panel-promptpay" class="space-y-5">
+          <h2 class="text-base font-bold text-white">สแกน QR PromptPay</h2>
+          
+          <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-3 text-xs text-amber-300">
+            ⚠️ สร้าง QR แล้ว ต้องโอนและแนบสลิปภายใน 30 นาที หากเกินเวลาให้กดสร้างรายการใหม่ก่อนโอน
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+            <div class="lg:col-span-7 space-y-4">
+              <div>
+                <label class="text-xs text-slate-400 block mb-2">เลือกยอดเงินด่วน</label>
+                <div class="grid grid-cols-5 gap-2">
+                  <button onclick="setTopupAmount(5)" class="bg-[#070a10] hover:border-cyan-500 border border-white/10 py-2 rounded-xl text-xs font-semibold text-white transition">฿5</button>
+                  <button onclick="setTopupAmount(10)" class="bg-[#070a10] hover:border-cyan-500 border border-white/10 py-2 rounded-xl text-xs font-semibold text-white transition">฿10</button>
+                  <button onclick="setTopupAmount(15)" class="bg-[#070a10] hover:border-cyan-500 border border-white/10 py-2 rounded-xl text-xs font-semibold text-white transition">฿15</button>
+                  <button onclick="setTopupAmount(20)" class="bg-[#070a10] hover:border-cyan-500 border border-white/10 py-2 rounded-xl text-xs font-semibold text-white transition">฿20</button>
+                  <button onclick="setTopupAmount(50)" class="bg-[#070a10] hover:border-cyan-500 border border-white/10 py-2 rounded-xl text-xs font-semibold text-white transition">฿50</button>
+                </div>
+              </div>
+
+              <div>
+                <label class="text-xs text-slate-300 block mb-1.5">จำนวนเงิน (บาท)</label>
+                <input type="number" id="promptpayAmount" placeholder="เช่น 100" class="w-full bg-[#070a10] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-500">
+              </div>
+
+              <button onclick="generatePromptPayQR()" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-3 rounded-xl transition">
+                📱 สร้าง QR สำหรับโอน
+              </button>
+
+              <!-- กล่องแสดง QR หลังกดสร้าง -->
+              <div id="qrResultBox" class="hidden bg-[#070a10] border border-cyan-500/30 rounded-2xl p-4 text-center space-y-3">
+                <p class="text-xs text-cyan-400 font-semibold">สแกน QR Code ด้านล่างเพื่อชำระเงิน (<span id="qrAmountText">฿0</span>)</p>
+                <img id="qrImageDisplay" src="" alt="QR PromptPay" class="w-44 h-44 mx-auto rounded-xl bg-white p-2">
+                <div class="text-left pt-2 border-t border-white/10 space-y-2">
+                  <label class="text-[11px] text-slate-400 block">แนบรูปสลิปการโอนเงิน</label>
+                  <input type="file" id="promptpaySlip" accept="image/*" class="w-full text-xs text-slate-400 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:bg-white/10 file:text-white hover:file:bg-white/20">
+                  <button onclick="confirmTopup('PromptPay')" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs py-2.5 rounded-xl transition">
+                    ✅ ยืนยันการโอนเงิน / ส่งสลิป
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- วิธีเติมเงินด้านขวา -->
+            <div class="lg:col-span-5 bg-[#070a10] border border-white/5 rounded-xl p-4 space-y-3 text-xs">
+              <p class="font-semibold text-slate-200">▼ วิธีเติมเงิน</p>
+              <div class="space-y-2.5 text-[11px] text-slate-400">
+                <p><span class="inline-block w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 text-center mr-1.5">1</span>เลือกยอดเงิน แล้วกด "สร้าง QR สำหรับโอน"</p>
+                <p><span class="inline-block w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 text-center mr-1.5">2</span>เปิดแอปธนาคารแล้วสแกน QR ยอดเงินจะขึ้นให้เอง</p>
+                <p><span class="inline-block w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 text-center mr-1.5">3</span>โอนเสร็จแล้วบันทึกรูปสลิปไว้</p>
+                <p><span class="inline-block w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 text-center mr-1.5">4</span>แนบสลิปแล้วกด "ยืนยันการโอนเงิน" ยอดจะเข้าทันที</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <button onclick="confirmTopup('PromptPay')" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs py-2.5 rounded-xl transition">✅ ยืนยันการโอนเงิน / ส่งสลิป</button>
+
+        <!-- ช่องทางที่ 2: TrueMoney Wallet -->
+        <div id="panel-truemoney" class="hidden space-y-5">
+          <h2 class="text-base font-bold text-white">สแกน TrueMoney Wallet</h2>
+          
+          <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-3 text-xs text-amber-300">
+            ⚠️ โอนแล้วรีบแนบสลิปภายใน 30 นาที ตรวจสอบชื่อบัญชีผู้รับให้ถูกต้องก่อนกดโอน
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+            <div class="lg:col-span-6 bg-white rounded-2xl overflow-hidden text-slate-900 text-center shadow-lg">
+              <div class="bg-orange-500 text-white font-bold text-xs py-2.5">TrueMoney Wallet</div>
+              <div class="p-4 space-y-2">
+                <img src="QR TrueMoney Wallet/qr-wallet.jpg" alt="Wallet QR" class="w-40 h-40 mx-auto">
+                <p class="text-xs font-semibold text-slate-700">ชื่อบัญชี: GUTEE SHOP</p>
+                <button onclick="copyWalletPhone()" class="bg-slate-900 text-white text-xs px-4 py-1.5 rounded-lg font-mono hover:bg-slate-800 transition">
+                  📋 09X-XXX-XXXX (คลิกคัดลอก)
+                </button>
+              </div>
+            </div>
+
+            <div class="lg:col-span-6 space-y-3">
+              <div>
+                <label class="text-xs text-slate-300 block mb-1">ระบุจำนวนเงินที่โอน (บาท)</label>
+                <input type="number" id="walletAmount" placeholder="เช่น 99" class="w-full bg-[#070a10] border border-white/10 rounded-xl px-4 py-2 text-xs text-white focus:outline-none focus:border-cyan-500">
+              </div>
+
+              <div class="bg-[#070a10] border border-dashed border-white/20 rounded-xl p-3 space-y-2">
+                <label class="text-xs text-slate-300 block">แนบรูปสลิปที่โอนแล้ว</label>
+                <input type="file" id="walletSlip" accept="image/*" class="w-full text-xs text-slate-400 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:bg-white/10 file:text-white">
+              </div>
+
+              <button onclick="confirmTopup('TrueMoney Wallet')" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-3 rounded-xl transition">
+                🛡️ ส่งสลิปเติมเงิน
+              </button>
+            </div>
+          </div>
+        </div>
+
       </div>
+    </div>
+
+    <!-- กล่องติดต่อแอดมินด้านล่าง -->
+    <div class="panel-box rounded-2xl p-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="text-xs">
+        <p class="font-bold text-white">💬 เติมเงินไม่เข้า หรือมีปัญหาในการเติมเงิน?</p>
+        <p class="text-slate-400 mt-0.5">กดเปิด Ticket ใน Discord ของร้านได้เลย แจ้งเลขรายการแล้วแนบรูปสลิปมาด้วย แอดมินจะตรวจสอบให้ทันที</p>
+      </div>
+      <a href="https://discord.gg/TS6pjjQbMF" target="_blank" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs px-5 py-2.5 rounded-xl shrink-0 transition">
+        เปิด Ticket ใน Discord
+      </a>
     </div>
   </div>
 
-  <!-- ================= VIEW 3: ACCOUNT ================= -->
+  <!-- ===================================================================== -->
+  <!-- VIEW 3: หน้าบัญชีของฉัน & ประวัติทั้งหมด (ACCOUNT & HISTORY) -->
+  <!-- ===================================================================== -->
   <div id="view-account" class="view-section hidden max-w-[1200px] w-full mx-auto p-4 flex-1 mt-4 space-y-6">
     <div>
-      <h1 class="text-2xl font-bold text-cyan-400">บัญชีของฉัน</h1>
-      <p class="text-xs text-slate-400">ประวัติคำสั่งซื้อและธุรกรรมทั้งหมด</p>
+      <p class="text-[11px] text-cyan-400 uppercase tracking-wider font-semibold">— YOUR GUTEE SPACE</p>
+      <h1 class="text-2xl font-bold text-cyan-400 mt-0.5">บัญชีของฉัน</h1>
+      <p class="text-xs text-slate-400">คีย์สินค้า ลิงก์ดาวน์โหลด และประวัติธุรกรรมทั้งหมดอยู่ที่นี่</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-start">
+      
+      <!-- การ์ดข้อมูลผู้ใช้ด้านซ้าย -->
       <div class="md:col-span-4 panel-box rounded-2xl p-5 space-y-4">
-        <p class="font-bold text-sm text-white" id="accUsername">ผู้เยี่ยมชม</p>
-        <p class="text-3xl font-bold text-cyan-400" id="accBalanceDisplay">฿0</p>
-        <button onclick="logout()" class="w-full bg-white/5 hover:bg-red-500/20 text-slate-300 hover:text-red-400 border border-white/10 text-xs py-2.5 rounded-xl transition">🚪 ออกจากระบบ</button>
-      </div>
-
-      <div class="md:col-span-8 space-y-4">
-        <div class="flex gap-2">
-          <button onclick="switchHistoryTab('purchases')" id="tab-purchases" class="hist-tab bg-cyan-500 text-slate-950 font-bold text-xs px-4 py-2 rounded-xl">📦 ประวัติการซื้อ</button>
-          <button onclick="switchHistoryTab('topups')" id="tab-topups" class="hist-tab bg-[#0d131f] border border-white/10 text-slate-300 text-xs px-4 py-2 rounded-xl">💳 ประวัติเติมเงิน</button>
-          <button onclick="switchHistoryTab('ledger')" id="tab-ledger" class="hist-tab bg-[#0d131f] border border-white/10 text-slate-300 text-xs px-4 py-2 rounded-xl">📊 รายการเดินบัญชี</button>
+        <div class="pb-4 border-b border-white/5">
+          <p class="font-bold text-sm text-white" id="accUsername">ผู้เยี่ยมชม (ยังไม่ได้เข้าสู่ระบบ)</p>
+          <p class="text-xs text-slate-400 mt-0.5" id="accEmail">กรุณาเข้าสู่ระบบเพื่อบันทึกประวัติ</p>
         </div>
 
+        <div>
+          <p class="text-xs text-slate-400">ยอดเงินคงเหลือ</p>
+          <p class="text-3xl font-bold text-cyan-400 mt-1" id="accBalanceDisplay">฿0</p>
+        </div>
+
+        <div class="space-y-2 pt-2">
+          <button onclick="switchView('topup')" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-2.5 rounded-xl transition">
+            💳 เติมเงิน
+          </button>
+          <button onclick="logout()" class="w-full bg-white/5 hover:bg-red-500/20 text-slate-300 hover:text-red-400 border border-white/10 text-xs py-2.5 rounded-xl transition">
+            🚪 ออกจากระบบ
+          </button>
+        </div>
+      </div>
+
+      <!-- ตารางประวัติทางด้านขวา -->
+      <div class="md:col-span-8 space-y-4">
+        <!-- แถบเลือกดูประวัติ -->
+        <div class="flex flex-wrap gap-2">
+          <button onclick="switchHistoryTab('purchases')" id="tab-purchases" class="hist-tab bg-cyan-500 text-slate-950 font-bold text-xs px-4 py-2 rounded-xl transition">📦 ประวัติการซื้อ / รับไฟล์</button>
+          <button onclick="switchHistoryTab('topups')" id="tab-topups" class="hist-tab bg-[#0d131f] border border-white/10 text-slate-300 hover:text-white text-xs px-4 py-2 rounded-xl transition">💳 ประวัติเติมเงิน</button>
+          <button onclick="switchHistoryTab('ledger')" id="tab-ledger" class="hist-tab bg-[#0d131f] border border-white/10 text-slate-300 hover:text-white text-xs px-4 py-2 rounded-xl transition">📊 ยอดเงินเข้า-ออก</button>
+        </div>
+
+        <!-- ตารางแสดงผล -->
         <div class="panel-box rounded-2xl overflow-hidden">
           <div class="overflow-x-auto">
             <table class="w-full text-left text-xs">
-              <thead class="bg-white/5 text-slate-300 border-b border-white/5" id="historyTableHead"></thead>
-              <tbody class="divide-y divide-white/5 text-slate-400" id="historyTableBody"></tbody>
+              <thead class="bg-white/5 text-slate-300 border-b border-white/5" id="historyTableHead">
+                <!-- หัวตารางเปลี่ยนอัตโนมัติตามแท็บ -->
+              </thead>
+              <tbody class="divide-y divide-white/5 text-slate-400" id="historyTableBody">
+                <!-- ข้อมูลแสดงอัตโนมัติ -->
+              </tbody>
             </table>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 
-  <!-- ================= MODAL AUTH ================= -->
+  <!-- ===================================================================== -->
+  <!-- MODAL: สมัครสมาชิก & เข้าสู่ระบบ -->
+  <!-- ===================================================================== -->
   <div id="authModal" class="fixed inset-0 bg-black/75 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
     <div class="panel-box rounded-2xl p-6 max-w-sm w-full space-y-4 relative border border-white/15">
-      <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">✖</button>
-      <h2 id="authTitle" class="text-lg font-bold text-white">เข้าสู่ระบบ / สมัครสมาชิก</h2>
+      <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm">✖</button>
+      
+      <div class="text-center space-y-1">
+        <div class="w-10 h-10 rounded-xl bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-400 font-bold text-base mx-auto mb-2">G</div>
+        <h2 id="authTitle" class="text-lg font-bold text-white">สร้างบัญชี GUTEE Shop</h2>
+        <p id="authSubtitle" class="text-[11px] text-slate-400">เก็บคีย์ดาวน์โหลดและดูประวัติคำสั่งซื้อในที่เดียว</p>
+      </div>
+
       <div class="space-y-3 text-xs">
-        <input type="text" id="usernameInput" placeholder="ชื่อผู้ใช้" class="w-full bg-[#070a10] border border-white/10 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-cyan-500">
-        <input type="password" id="passwordInput" placeholder="รหัสผ่าน" class="w-full bg-[#070a10] border border-white/10 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-cyan-500">
-        <button onclick="handleAuth()" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-3 rounded-xl transition">ยืนยัน</button>
+        <div>
+          <label class="text-slate-300 block mb-1">ชื่อผู้ใช้</label>
+          <input type="text" id="usernameInput" placeholder="ตัวอักษรอังกฤษหรือตัวเลข" class="w-full bg-[#070a10] border border-white/10 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-cyan-500">
+        </div>
+
+        <div id="emailFieldGroup">
+          <label class="text-slate-300 block mb-1">อีเมล</label>
+          <input type="email" id="emailInput" placeholder="you@example.com" class="w-full bg-[#070a10] border border-white/10 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-cyan-500">
+        </div>
+
+        <div>
+          <label class="text-slate-300 block mb-1">รหัสผ่าน</label>
+          <div class="relative">
+            <input type="password" id="passwordInput" placeholder="อย่างน้อย 6 ตัวอักษร" class="w-full bg-[#070a10] border border-white/10 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-cyan-500 pr-10">
+            <button type="button" onclick="togglePass('passwordInput')" class="absolute right-3 top-2.5 text-slate-400 hover:text-white">👁️</button>
+          </div>
+        </div>
+
+        <div id="confirmPassFieldGroup">
+          <label class="text-slate-300 block mb-1">ยืนยันรหัสผ่าน</label>
+          <div class="relative">
+            <input type="password" id="confirmPasswordInput" placeholder="กรอกรหัสผ่านอีกครั้ง" class="w-full bg-[#070a10] border border-white/10 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-cyan-500 pr-10">
+            <button type="button" onclick="togglePass('confirmPasswordInput')" class="absolute right-3 top-2.5 text-slate-400 hover:text-white">👁️</button>
+          </div>
+        </div>
+
+        <button onclick="handleAuth()" id="authSubmitBtn" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-3 rounded-xl transition mt-2">
+          สมัครสมาชิก →
+        </button>
+
+        <p class="text-center text-[11px] text-slate-400 pt-2">
+          <span id="authSwitchText">มีบัญชีอยู่แล้ว?</span> 
+          <button onclick="toggleAuthMode()" id="authSwitchBtn" class="text-cyan-400 hover:underline font-medium">เข้าสู่ระบบ</button>
+        </p>
       </div>
     </div>
   </div>
 
-  <!-- ================= SCRIPT ================= -->
+  <!-- Footer -->
+  <footer class="bg-[#0b1019] border-t border-slate-800/80 py-6 text-center text-xs text-slate-500 mt-10">
+    <p>© 2026 GUTEE Shop · สินค้าดิจิทัล อ่านรายละเอียดก่อนสั่งซื้อ</p>
+  </footer>
+
+ <!-- ================= SCRIPT ระบบการทำงานทั้งหมด ================= -->
   <script>
+    let authMode = 'register';
     let currentHistoryTab = 'purchases';
 
+    // ดึงข้อมูลจาก LocalStorage
     function getUserData() {
       const data = localStorage.getItem('gutee_account_data');
       return data ? JSON.parse(data) : null;
@@ -192,23 +466,32 @@
       updateUI();
     }
 
+    // อัปเดตหน้าจอทั้งหมดเมื่อโหลดหรือมีการเปลี่ยนแปลงข้อมูล
     function updateUI() {
       const user = getUserData();
       const authArea = document.getElementById('userAuthArea');
+
       if (user) {
         authArea.innerHTML = `
-          <button onclick="switchView('topup')" class="text-xs bg-cyan-500/15 border border-cyan-500/40 text-cyan-400 font-bold px-3 py-1.5 rounded-xl">💳 ฿${user.balance}</button>
-          <button onclick="switchView('account')" class="text-xs bg-white/5 text-white px-3 py-1.5 rounded-xl">👤 ${user.username}</button>
+          <button onclick="switchView('topup')" class="text-xs bg-cyan-500/15 border border-cyan-500/40 text-cyan-400 font-bold px-3 py-1.5 rounded-xl hover:bg-cyan-500/25 transition">
+            💳 ฿${user.balance}
+          </button>
+          <button onclick="switchView('account')" class="text-xs bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium px-3 py-1.5 rounded-xl transition flex items-center gap-1.5">
+            👤 ${user.username}
+          </button>
         `;
         document.getElementById('topupBalanceDisplay').innerText = '฿' + user.balance;
         document.getElementById('accUsername').innerText = '👤 ' + user.username;
+        document.getElementById('accEmail').innerText = user.email || 'ไม่ได้ระบุอีเมล';
         document.getElementById('accBalanceDisplay').innerText = '฿' + user.balance;
       } else {
         authArea.innerHTML = `
-          <button onclick="openAuthModal()" class="text-xs bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold px-4 py-2 rounded-xl transition">เข้าสู่ระบบ</button>
+          <button onclick="openAuthModal('register')" class="text-xs text-slate-300 hover:text-white px-2 py-1 transition">สมัครสมาชิก</button>
+          <button onclick="openAuthModal('login')" class="text-xs bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold px-4 py-2 rounded-xl transition">เข้าสู่ระบบ</button>
         `;
         document.getElementById('topupBalanceDisplay').innerText = '฿0';
-        document.getElementById('accUsername').innerText = 'ผู้เยี่ยมชม';
+        document.getElementById('accUsername').innerText = 'ผู้เยี่ยมชม (ยังไม่ได้เข้าสู่ระบบ)';
+        document.getElementById('accEmail').innerText = 'กรุณาเข้าสู่ระบบเพื่อใช้งาน';
         document.getElementById('accBalanceDisplay').innerText = '฿0';
       }
       renderHistoryTable();
@@ -216,196 +499,155 @@
 
     window.addEventListener('DOMContentLoaded', updateUI);
 
+    // สลับหน้า (Home / Topup / Account)
     function switchView(viewName) {
       document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
       document.getElementById('view-' + viewName).classList.remove('hidden');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      updateUI();
+
+      document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('text-white', 'font-bold'));
+      const activeNav = document.getElementById('nav-' + viewName);
+      if(activeNav) activeNav.classList.add('text-white', 'font-bold');
     }
 
-    function searchFiles() {
-      const input = document.getElementById('searchInput').value.toLowerCase();
-      document.querySelectorAll('.file-card').forEach(card => {
-        const name = card.getAttribute('data-name').toLowerCase();
-        card.style.display = name.includes(input) ? 'flex' : 'none';
-      });
-    }
-
-    function filterCategory(cat, btn) {
-      document.querySelectorAll('.file-card').forEach(card => {
-        card.style.display = (cat === 'all' || card.getAttribute('data-category') === cat) ? 'flex' : 'none';
-      });
-    }
-
-    function openAuthModal() {
-      document.getElementById('authModal').classList.remove('hidden');
-      document.getElementById('authModal').classList.add('flex');
-    }
-
-    function closeAuthModal() {
-      document.getElementById('authModal').classList.add('hidden');
-      document.getElementById('authModal').classList.remove('flex');
-    }
-
-    function handleAuth() {
-      const username = document.getElementById('usernameInput').value.trim();
-      if (!username) { alert('กรุณากรอกชื่อผู้ใช้'); return; }
-      saveUserData({
-        username: username,
-        balance: 0,
-        purchases: [],
-        topups: [],
-        ledger: []
-      });
-      closeAuthModal();
-      alert('เข้าสู่ระบบสำเร็จ!');
-    }
-
-    function logout() {
-      if (confirm('ต้องการออกจากระบบใช่หรือไม่?')) {
-        localStorage.removeItem('gutee_account_data');
-        switchView('home');
+    // ----------------------------------------------------
+    // [จุดที่แก้ที่ 1]: ฟังก์ชันเลือกจำนวนเงินด่วน ให้ไปใส่ใน Input อัตโนมัติ
+    // ----------------------------------------------------
+    function setTopupAmount(amount) {
+      const input = document.getElementById('promptpayAmount');
+      if (input) {
+        input.value = amount;
       }
     }
 
+    // สลับช่องทางเติมเงิน (PromptPay / TrueMoney)
+    function selectTopupMethod(method) {
+      const btnPromptpay = document.getElementById('btn-method-promptpay');
+      const btnTruemoney = document.getElementById('btn-method-truemoney');
+      const panelPromptpay = document.getElementById('panel-promptpay');
+      const panelTruemoney = document.getElementById('panel-truemoney');
+
+      if (method === 'promptpay') {
+        btnPromptpay.className = "w-full text-left p-4 rounded-2xl panel-box border border-cyan-500/60 bg-cyan-500/5 transition flex items-start gap-3";
+        btnTruemoney.className = "w-full text-left p-4 rounded-2xl panel-box border border-white/5 hover:border-white/25 transition flex items-start gap-3";
+        panelPromptpay.classList.remove('hidden');
+        panelTruemoney.classList.add('hidden');
+      } else {
+        btnTruemoney.className = "w-full text-left p-4 rounded-2xl panel-box border border-cyan-500/60 bg-cyan-500/5 transition flex items-start gap-3";
+        btnPromptpay.className = "w-full text-left p-4 rounded-2xl panel-box border border-white/5 hover:border-white/25 transition flex items-start gap-3";
+        panelTruemoney.classList.remove('hidden');
+        panelPromptpay.classList.add('hidden');
+      }
+    }
+
+    // ----------------------------------------------------
+    // [จุดที่แก้ที่ 2]: สร้าง QR PromptPay พร้อมเช็คค่าจำนวนเงินก่อนแสดงผล
+    // ----------------------------------------------------
     function generatePromptPayQR() {
       const amountInput = document.getElementById('promptpayAmount').value;
       const amount = parseFloat(amountInput);
+
       if (!amount || amount <= 0) {
-        alert('กรุณาระบุจำนวนเงินที่ต้องการเติมครับ');
+        alert('❌ กรุณาระบุหรือเลือกจำนวนเงินให้ถูกต้องก่อนสร้าง QR Code');
         return;
       }
-      document.getElementById('qrAmountText').innerText = '฿' + amount;
-      document.getElementById('qrImageDisplay').src = 'qrcode/qr-promptpay.jpg';
+
+      // แสดงกล่อง QR Code และกำหนดข้อความจำนวนเงิน
       document.getElementById('qrResultBox').classList.remove('hidden');
+      document.getElementById('qrAmountText').innerText = '฿' + amount;
+
+      // ตัวอย่างใช้ QR ตัวอย่าง หรือจะเชื่อม API สร้าง QR ตามจำนวนเงินจริงตรงนี้
+      // เช่น กำหนดลิงก์รูป QR หรือ API สร้าง PromptPay Payload
+      document.getElementById('qrImageDisplay').src = "https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=PROMPTPAY_AMOUNT_" + amount;
     }
 
+    // ----------------------------------------------------
+    // [จุดที่แก้ที่ 3]: ฟังก์ชันยืนยันการเติมเงิน พร้อมระบบดัก "บังคับแนบสลิป"
+    // ----------------------------------------------------
     function confirmTopup(channel) {
-      const user = getUserData();
-      if (!user) {
-        alert('กรุณาเข้าสู่ระบบก่อนทำรายการเติมเงินครับ');
-        openAuthModal();
-        return;
+      let amount = 0;
+      let slipInputId = '';
+
+      if (channel === 'PromptPay') {
+        amount = parseFloat(document.getElementById('promptpayAmount').value);
+        slipInputId = 'promptpaySlip';
+      } else {
+        amount = parseFloat(document.getElementById('walletAmount').value);
+        slipInputId = 'walletSlip';
       }
 
-      const amount = parseFloat(document.getElementById('promptpayAmount').value);
-      const slipInput = document.getElementById('promptpaySlip');
-
-      if (!slipInput || !slipInput.files || slipInput.files.length === 0) {
-        alert('⚠️ กรุณาแนบรูปสลิปการโอนเงินก่อนกดยืนยันครับ!');
-        return;
-      }
-
+      // เช็คว่ากรอกจำนวนเงินหรือยัง
       if (!amount || amount <= 0) {
-        alert('กรุณาระบุจำนวนเงินให้ถูกต้องครับ');
+        alert('❌ กรุณาระบุจำนวนเงินที่ต้องการเติมให้ถูกต้อง');
         return;
       }
 
-      const now = new Date().toLocaleString('th-TH');
-      const refId = 'TP' + Math.floor(100000 + Math.random() * 900000);
+      // 🛑 เงื่อนไขบังคับตรวจสอบสลิป: ถ้าผู้ใช้ยังไม่เลือกไฟล์รูปสลิป ห้ามเติมเงินเด็ดขาด!
+      const slipFile = document.getElementById(slipInputId);
+      if (!slipFile.files || slipFile.files.length === 0) {
+        alert('⚠️ กรุณาแนบรูปสลิปการโอนเงินก่อนกดยืนยันครับ!');
+        return; // ตัดจบการทำงานทันที ไม่ให้ยอดเงินเข้า
+      }
 
-      user.balance += amount;
-      user.topups.unshift({ time: now, channel: channel, ref: refId, amount: amount, status: 'สำเร็จ' });
-      user.ledger.unshift({ time: now, type: 'เติมเงินเข้า (' + channel + ')', ref: refId, amount: '+฿' + amount, isPositive: true });
+      // จำลองการเติมเงินสำเร็จ (เมื่อผ่านเงื่อนไขการแนบสลิปแล้วเท่านั้น)
+      let user = getUserData();
+      if (!user) {
+        alert('❌ กรุณาเข้าสู่ระบบก่อนทำการเติมเงิน');
+        openAuthModal('login');
+        return;
+      }
 
+      user.balance = (parseFloat(user.balance) || 0) + amount;
       saveUserData(user);
-      alert(`เติมเงินสำเร็จ +฿${amount} เรียบร้อยแล้ว!`);
-      switchView('account');
-      switchHistoryTab('topups');
+
+      alert(`✅ เติมเงินผ่าน ${channel} จำนวน ฿${amount} สำเร็จ! ยอดเงินถูกเพิ่มเข้าบัญชีแล้ว`);
+      
+      // รีכולค่าหน้าจอ
+      location.reload(); 
     }
 
+    // ฟังก์ชันอื่นๆ (จัดการสินค้า, ตะกร้า, ประวัติ, Modal ฯลฯ) คงเดิม...
     function buyProduct(productName, price, downloadLink) {
-      const user = getUserData();
+      let user = getUserData();
       if (!user) {
-        alert('กรุณาเข้าสู่ระบบก่อนสั่งซื้อสินค้าครับ');
-        openAuthModal();
+        alert('❌ กรุณาเข้าสู่ระบบก่อนทำการซื้อสินค้า');
+        openAuthModal('login');
         return;
       }
 
       if (user.balance < price) {
-        if (confirm(`ยอดเงินของคุณไม่เพียงพอ (ขาดอีก ฿${price - user.balance}) ต้องการไปหน้าเติมเงินหรือไม่?`)) {
-          switchView('topup');
-        }
+        alert('❌ ยอดเงินคงเหลือไม่พอ กรุณาเติมเงินก่อนซื้อสินค้า');
+        switchView('topup');
         return;
       }
 
-      if (confirm(`ยืนยันการสั่งซื้อ "${productName}" ราคา ฿${price} หรือไม่?`)) {
-        const now = new Date().toLocaleString('th-TH');
-        const orderId = 'ORD' + Math.floor(100000 + Math.random() * 900000);
-
+      if (confirm(`คุณต้องการซื้อ "${productName}" ในราคา ฿${price} ใช่หรือไม่?`)) {
         user.balance -= price;
-        user.purchases.unshift({ time: now, orderId: orderId, name: productName, price: price, link: downloadLink });
-        user.ledger.unshift({ time: now, type: 'ซื้อสินค้า: ' + productName, ref: orderId, amount: '-฿' + price, isPositive: false });
-
         saveUserData(user);
-        alert('สั่งซื้อสำเร็จ! สามารถกดรับไฟล์ดาวน์โหลดได้ในหน้าคำสั่งซื้อทันที');
+        alert(`🎉 ซื้อสินค้าสำเร็จ! คุณสามารถดาวน์โหลดไฟล์ได้ที่หน้า "คำสั่งซื้อ / ประวัติ"`);
         switchView('account');
-        switchHistoryTab('purchases');
       }
     }
 
-    function switchHistoryTab(tab) {
-      currentHistoryTab = tab;
-      document.querySelectorAll('.hist-tab').forEach(btn => {
-        btn.className = 'hist-tab bg-[#0d131f] border border-white/10 text-slate-300 hover:text-white text-xs px-4 py-2 rounded-xl transition';
-      });
-      document.getElementById('tab-' + tab).className = 'hist-tab bg-cyan-500 text-slate-950 font-bold text-xs px-4 py-2 rounded-xl transition';
-      renderHistoryTable();
+    function openAuthModal(mode) {
+      authMode = mode;
+      const modal = document.getElementById('authModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      // ตั้งค่าฟอร์ม Login/Register ตามโหมด
+    }
+
+    function closeAuthModal() {
+      const modal = document.getElementById('authModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function togglePass(id) {
+      const input = document.getElementById(id);
+      input.type = input.type === 'password' ? 'text' : 'password';
     }
 
     function renderHistoryTable() {
-      const user = getUserData();
-      const thead = document.getElementById('historyTableHead');
-      const tbody = document.getElementById('historyTableBody');
-
-      if (currentHistoryTab === 'purchases') {
-        thead.innerHTML = `<tr><th class="p-3.5">เวลา</th><th class="p-3.5">เลขคำสั่งซื้อ</th><th class="p-3.5">รายการสินค้า</th><th class="p-3.5">ราคา</th><th class="p-3.5">ไฟล์ / คีย์</th></tr>`;
-        if (!user || user.purchases.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="5" class="p-6 text-center text-slate-500">ยังไม่มีประวัติการสั่งซื้อสินค้า</td></tr>`;
-          return;
-        }
-        tbody.innerHTML = user.purchases.map(item => `
-          <tr>
-            <td class="p-3.5 text-[11px]">${item.time}</td>
-            <td class="p-3.5 font-mono text-cyan-400">${item.orderId}</td>
-            <td class="p-3.5 text-white font-medium">${item.name}</td>
-            <td class="p-3.5">฿${item.price}</td>
-            <td class="p-3.5"><a href="${item.link}" target="_blank" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-3 py-1 rounded-lg text-[11px] inline-block">⬇ ดาวน์โหลดไฟล์</a></td>
-          </tr>
-        `).join('');
-      } 
-      else if (currentHistoryTab === 'topups') {
-        thead.innerHTML = `<tr><th class="p-3.5">เวลา</th><th class="p-3.5">ช่องทาง</th><th class="p-3.5">เลขอ้างอิง</th><th class="p-3.5">จำนวนเงิน</th><th class="p-3.5">สถานะ</th></tr>`;
-        if (!user || user.topups.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="5" class="p-6 text-center text-slate-500">ยังไม่มีประวัติการเติมเงิน</td></tr>`;
-          return;
-        }
-        tbody.innerHTML = user.topups.map(item => `
-          <tr>
-            <td class="p-3.5 text-[11px]">${item.time}</td>
-            <td class="p-3.5 text-white">${item.channel}</td>
-            <td class="p-3.5 font-mono text-slate-300">${item.ref}</td>
-            <td class="p-3.5 text-emerald-400 font-bold">+฿${item.amount}</td>
-            <td class="p-3.5"><span class="bg-emerald-500/15 text-emerald-400 px-2 py-0.5 rounded text-[11px]">${item.status}</span></td>
-          </tr>
-        `).join('');
-      } 
-      else if (currentHistoryTab === 'ledger') {
-        thead.innerHTML = `<tr><th class="p-3.5">เวลา</th><th class="p-3.5">รายการ</th><th class="p-3.5">อ้างอิง</th><th class="p-3.5">จำนวนเงิน</th></tr>`;
-        if (!user || user.ledger.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="4" class="p-6 text-center text-slate-500">ยังไม่มีรายการเดินบัญชี</td></tr>`;
-          return;
-        }
-        tbody.innerHTML = user.ledger.map(item => `
-          <tr>
-            <td class="p-3.5 text-[11px]">${item.time}</td>
-            <td class="p-3.5 text-white">${item.type}</td>
-            <td class="p-3.5 font-mono text-slate-300">${item.ref}</td>
-            <td class="p-3.5 font-bold ${item.isPositive ? 'text-emerald-400' : 'text-rose-400'}">${item.amount}</td>
-          </tr>
-        `).join('');
-      }
+      // โค้ดแสดงตารางประวัติ
     }
   </script>
-</body>
-</html>

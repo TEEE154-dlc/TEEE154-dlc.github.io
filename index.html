@@ -145,7 +145,7 @@
             </div>
           </div>
           <div class="grid grid-cols-2 gap-2 mt-5 pt-3 border-t border-white/5">
-            <button onclick="buyProduct('GUTEE ReShade Preset Pro',30, 'https://drive.google.com/link-reshade-secret')" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-2 rounded-xl text-center transition">🛒 ซื้อ (฿1)</button>
+            <button onclick="buyProduct('GUTEE ReShade Preset Pro',1, 'https://drive.google.com/link-reshade-secret')" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs py-2 rounded-xl text-center transition">🛒 ซื้อ (฿1)</button>
             <button onclick="alert('รายละเอียด: พรีเซ็ต ReShade ตัวเต็ม สั่งซื้อแล้วรับลิงก์ดาวน์โหลดในหน้าคำสั่งซื้อทันที')" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs py-2 rounded-xl text-center transition">📄 รายละเอียด</button>
           </div>
         </div>
@@ -655,130 +655,42 @@
       alert('คัดลอกเบอร์ TrueMoney Wallet เรียบร้อยแล้ว!');
     }
 
-    function confirmTopup(channel) {
-      const user = getUserData();
-      if (!user) {
-        alert('กรุณาเข้าสู่ระบบหรือสมัครสมาชิกก่อนทำรายการเติมเงินครับ');
-        openAuthModal('login');
-        return;
-      }
+   function confirmTopup(channel) {
+  const user = getUserData();
+  if (!user) {
+    alert('กรุณาเข้าสู่ระบบหรือสมัครสมาชิกก่อนทำรายการเติมเงินครับ');
+    openAuthModal('login');
+    return;
+  }
 
-      const amount = (channel === 'PromptPay') 
-        ? parseFloat(document.getElementById('promptpayAmount').value)
-        : parseFloat(document.getElementById('walletAmount').value);
+  const amount = (channel === 'PromptPay') 
+    ? parseFloat(document.getElementById('promptpayAmount').value)
+    : parseFloat(document.getElementById('walletAmount').value);
 
-      if (!amount || amount <= 0) {
-        alert('กรุณาระบุจำนวนเงินให้ถูกต้องครับ');
-        return;
-      }
+  // เช็กว่าเลือกไฟล์สลิปหรือยัง (ป้องกันเงินเข้าโดยไม่แนบสลิป)
+  const slipInput = (channel === 'PromptPay') 
+    ? document.getElementById('promptpaySlip')
+    : document.getElementById('walletSlip');
 
-      const now = new Date().toLocaleString('th-TH');
-      const refId = 'TP' + Math.floor(100000 + Math.random() * 900000);
+  if (!slipInput.files || slipInput.files.length === 0) {
+    alert('⚠️ กรุณาแนบรูปสลิปการโอนเงินก่อนกดยืนยันครับ!');
+    return;
+  }
 
-      user.balance += amount;
-      user.topups.unshift({ time: now, channel: channel, ref: refId, amount: amount, status: 'สำเร็จ' });
-      user.ledger.unshift({ time: now, type: 'เติมเงินเข้า (' + channel + ')', ref: refId, amount: '+฿' + amount, isPositive: true });
+  if (!amount || amount <= 0) {
+    alert('กรุณาระบุจำนวนเงินให้ถูกต้องครับ');
+    return;
+  }
 
-      saveUserData(user);
-      alert(`เติมเงินสำเร็จ +฿${amount} เรียบร้อยแล้ว! ระบบได้บันทึกประวัติเรียบร้อย`);
-      switchView('account');
-      switchHistoryTab('topups');
-    }
+  const now = new Date().toLocaleString('th-TH');
+  const refId = 'TP' + Math.floor(100000 + Math.random() * 900000);
 
-    // ระบบสั่งซื้อสินค้า & หักเงิน
-    function buyProduct(productName, price, downloadLink) {
-      const user = getUserData();
-      if (!user) {
-        alert('กรุณาเข้าสู่ระบบก่อนสั่งซื้อสินค้าครับ');
-        openAuthModal('login');
-        return;
-      }
+  user.balance += amount;
+  user.topups.unshift({ time: now, channel: channel, ref: refId, amount: amount, status: 'สำเร็จ' });
+  user.ledger.unshift({ time: now, type: 'เติมเงินเข้า (' + channel + ')', ref: refId, amount: '+฿' + amount, isPositive: true });
 
-      if (user.balance < price) {
-        if (confirm(`ยอดเงินของคุณไม่เพียงพอ (ขาดอีก ฿${price - user.balance}) ต้องการไปหน้าเติมเงินหรือไม่?`)) {
-          switchView('topup');
-        }
-        return;
-      }
-
-      if (confirm(`ยืนยันการสั่งซื้อ "${productName}" ราคา ฿${price} หรือไม่?`)) {
-        const now = new Date().toLocaleString('th-TH');
-        const orderId = 'ORD' + Math.floor(100000 + Math.random() * 900000);
-
-        user.balance -= price;
-        user.purchases.unshift({ time: now, orderId: orderId, name: productName, price: price, link: downloadLink });
-        user.ledger.unshift({ time: now, type: 'ซื้อสินค้า: ' + productName, ref: orderId, amount: '-฿' + price, isPositive: false });
-
-        saveUserData(user);
-        alert('สั่งซื้อสำเร็จ! สามารถกดรับไฟล์ดาวน์โหลดได้ในหน้าคำสั่งซื้อทันที');
-        switchView('account');
-        switchHistoryTab('purchases');
-      }
-    }
-
-    // สลับแท็บประวัติในหน้า Account
-    function switchHistoryTab(tab) {
-      currentHistoryTab = tab;
-      document.querySelectorAll('.hist-tab').forEach(btn => {
-        btn.className = 'hist-tab bg-[#0d131f] border border-white/10 text-slate-300 hover:text-white text-xs px-4 py-2 rounded-xl transition';
-      });
-      document.getElementById('tab-' + tab).className = 'hist-tab bg-cyan-500 text-slate-950 font-bold text-xs px-4 py-2 rounded-xl transition';
-      renderHistoryTable();
-    }
-
-    function renderHistoryTable() {
-      const user = getUserData();
-      const thead = document.getElementById('historyTableHead');
-      const tbody = document.getElementById('historyTableBody');
-
-      if (currentHistoryTab === 'purchases') {
-        thead.innerHTML = `<tr><th class="p-3.5">เวลา</th><th class="p-3.5">เลขคำสั่งซื้อ</th><th class="p-3.5">รายการสินค้า</th><th class="p-3.5">ราคา</th><th class="p-3.5">ไฟล์ / คีย์</th></tr>`;
-        if (!user || user.purchases.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="5" class="p-6 text-center text-slate-500">ยังไม่มีประวัติการสั่งซื้อสินค้า</td></tr>`;
-          return;
-        }
-        tbody.innerHTML = user.purchases.map(item => `
-          <tr>
-            <td class="p-3.5 text-[11px]">${item.time}</td>
-            <td class="p-3.5 font-mono text-cyan-400">${item.orderId}</td>
-            <td class="p-3.5 text-white font-medium">${item.name}</td>
-            <td class="p-3.5">฿${item.price}</td>
-            <td class="p-3.5"><a href="${item.link}" target="_blank" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-3 py-1 rounded-lg text-[11px] inline-block">⬇ ดาวน์โหลดไฟล์</a></td>
-          </tr>
-        `).join('');
-      } 
-      else if (currentHistoryTab === 'topups') {
-        thead.innerHTML = `<tr><th class="p-3.5">เวลา</th><th class="p-3.5">ช่องทาง</th><th class="p-3.5">เลขอ้างอิง</th><th class="p-3.5">จำนวนเงิน</th><th class="p-3.5">สถานะ</th></tr>`;
-        if (!user || user.topups.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="5" class="p-6 text-center text-slate-500">ยังไม่มีประวัติการเติมเงิน</td></tr>`;
-          return;
-        }
-        tbody.innerHTML = user.topups.map(item => `
-          <tr>
-            <td class="p-3.5 text-[11px]">${item.time}</td>
-            <td class="p-3.5 text-white">${item.channel}</td>
-            <td class="p-3.5 font-mono text-slate-300">${item.ref}</td>
-            <td class="p-3.5 text-emerald-400 font-bold">+฿${item.amount}</td>
-            <td class="p-3.5"><span class="bg-emerald-500/15 text-emerald-400 px-2 py-0.5 rounded text-[11px]">${item.status}</span></td>
-          </tr>
-        `).join('');
-      } 
-      else if (currentHistoryTab === 'ledger') {
-        thead.innerHTML = `<tr><th class="p-3.5">เวลา</th><th class="p-3.5">รายการ</th><th class="p-3.5">อ้างอิง</th><th class="p-3.5">จำนวนเงิน</th></tr>`;
-        if (!user || user.ledger.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="4" class="p-6 text-center text-slate-500">ยังไม่มีรายการเดินบัญชี</td></tr>`;
-          return;
-        }
-        tbody.innerHTML = user.ledger.map(item => `
-          <tr>
-            <td class="p-3.5 text-[11px]">${item.time}</td>
-            <td class="p-3.5 text-white">${item.type}</td>
-            <td class="p-3.5 font-mono text-slate-300">${item.ref}</td>
-            <td class="p-3.5 font-bold ${item.isPositive ? 'text-emerald-400' : 'text-rose-400'}">${item.amount}</td>
-          </tr>
-        `).join('');
-      }
-    }
-  </script>
-</body>
-</html>
+  saveUserData(user);
+  alert(`เติมเงินสำเร็จ +฿${amount} เรียบร้อยแล้ว!`);
+  switchView('account');
+  switchHistoryTab('topups');
+}
